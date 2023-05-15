@@ -25,6 +25,10 @@ some code
 ./SOC_parse.py -ki P_salmonis_kofam.txt -b blast_outputs/ -ad P_salmonis/ -ac NZ_CP013821.1 -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv -so socks.csv -ko kofam.csv -ao antismash.csv -bo blast.csv
 ```
 
+## Download genomes
+
+-- use the download datasets
+
 ## Manuscript
 
 -- link to preprint
