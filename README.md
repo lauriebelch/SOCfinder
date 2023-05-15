@@ -20,9 +20,9 @@ some code
 -- explain the files it needs, and where they are
 
 ```python
-./SOC_mine.py -g test/B_aphidicola.faa -f test/B_aphidicola.fna -gff test/B_aphidicola.gff3 -O test_kofam.txt -n
+./SOC_mine.py -g test2/P_salmonis.faa -f test2/P_salmonis.fna -gff test2/P_salmonis.gff3 -O P_salmonis_kofam.txt -n
 
-./SOC_parse.py --examples from buchnera
+./SOC_parse.py -ki P_salmonis_kofam.txt -b blast_outputs/ -ad P_salmonis/ -ac NZ_CP013821.1 -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv -so socks.csv -ko kofam.csv -ao antismash.csv -bo blast.csv
 ```
 
 ## Manuscript
