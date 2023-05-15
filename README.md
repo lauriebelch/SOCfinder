@@ -20,7 +20,7 @@ some code
 -- explain the files it needs, and where they are
 
 ```python
-./SOC_mine.py --examples from buchnera
+./SOC_mine.py -g test/B_aphidicola.faa -f test/B_aphidicola.fna -gff test/B_aphidicola.gff3 -O test_kofam.txt -n
 
 ./SOC_parse.py --examples from buchnera
 ```
