@@ -1,0 +1,321 @@
+﻿category,term,name,desc
+beta-lactamase,K24162,blaBlaB, beta-lactamase class B BlaB
+beta-lactamase,K24161,blaGOP, beta-lactamase class B GOB
+beta-lactamase,K24159,blaLAP, beta-lactamase class A LAP
+beta-lactamase,K24153,blaOXY, beta-lactamase class A OXY
+beta-lactamase,K22352,blaOXA-29, beta-lactamase class D OXA-29
+beta-lactamase,K22351,blaOXA-209, beta-lactamase class D OXA-209
+beta-lactamase,K22346,blaSME, beta-lactamase class A SME
+beta-lactamase,K22335,blaOXA-114, beta-lactamase class D OXA-114
+beta-lactamase,K22334,blaOXA-464, beta-lactamase class D OXA-464
+beta-lactamase,K22333,blaOXA-493, beta-lactamase class D OXA-493
+beta-lactamase,K22332,blaOXA-548, beta-lactamase class D OXA-548
+beta-lactamase,K22331,blaOXA-184, beta-lactamase class D OXA-184
+beta-lactamase,K21277,blaOXA-60, beta-lactamase class D OXA-60
+beta-lactamase,K21276,blaOXA-22, beta-lactamase class D OXA-22
+beta-lactamase,K21266,blaOXA-286, beta-lactamase class D OXA-286
+beta-lactamase,K20320,blaPDC, beta-lactamase class C PDC
+beta-lactamase,K20319,blaADC, beta-lactamase class C ADC
+beta-lactamase,K19322,blaOXA-229, beta-lactamase class D OXA-229
+beta-lactamase,K19321,blaOXA-214, beta-lactamase class D OXA-214
+beta-lactamase,K19320,blaOXA-211, beta-lactamase class D OXA-211
+beta-lactamase,K19319,blaOXA-134, beta-lactamase class D OXA-134
+beta-lactamase,K19318,blaOXA-213, beta-lactamase class D OXA-213
+beta-lactamase,K19317,blaBEL, beta-lactamase class A BEL
+beta-lactamase,K19316,blaIMI, beta-lactamase class A IMI
+beta-lactamase,K19218,blaCARB-5," beta-lactamase class A CARB-5, RTG family"
+beta-lactamase,K19217,blaCARB-17, beta-lactamase class A CARB-17
+beta-lactamase,K19215,blaACT_MIR, beta-lactamase class C ACT/MIR
+beta-lactamase,K19214,blaACC, beta-lactamase class C ACC
+beta-lactamase,K19213,blaOXA-12, beta-lactamase class D OXA-12
+beta-lactamase,K19212,blaOXA-63, beta-lactamase class D OXA-63
+beta-lactamase,K19211,blaOXA-62, beta-lactamase class D OXA-62
+beta-lactamase,K19210,blaOXA-61, beta-lactamase class D OXA-61
+beta-lactamase,K19209,blaOXA-42, beta-lactamase class D OXA-42
+beta-lactamase,K19101,blaFOX, beta-lactamase class C FOX
+beta-lactamase,K19100,blaDHA, beta-lactamase class C DHA
+beta-lactamase,K19098,blaOXA-9, beta-lactamase class D OXA-9
+beta-lactamase,K19097,blaVEB, beta-lactamase class A VEB
+beta-lactamase,K19096,blaCMY-2, beta-lactamase class C CMY-2
+beta-lactamase,K19095,blaCMY-1, beta-lactamase class C CMY-1
+beta-lactamase,K18976,blaOXA-48, beta-lactamase class D OXA-48
+beta-lactamase,K18973,blaOXA-50, beta-lactamase class D OXA-50
+beta-lactamase,K18972,blaOXA-58, beta-lactamase class D OXA-58
+beta-lactamase,K18971,blaOXA-24, beta-lactamase class D OXA-24
+beta-lactamase,K18970,blaGES, beta-lactamase class A GES
+beta-lactamase,K18797,blaPER, beta-lactamase class A PER
+beta-lactamase,K18796,blaLEN, beta-lactamase class A LEN
+beta-lactamase,K18795,blaCARB-1," beta-lactamase class A CARB-1, PSE family"
+beta-lactamase,K18794,blaOXA-51, beta-lactamase class D OXA-51
+beta-lactamase,K18793,blaOXA-23, beta-lactamase class D OXA-23
+beta-lactamase,K18792,blaOXA-10, beta-lactamase class D OXA-10
+beta-lactamase,K18791,blaOXA-2, beta-lactamase class D OXA-2
+beta-lactamase,K18790,blaOXA-1, beta-lactamase class D OXA-1
+beta-lactamase,K18768,blaKPC, beta-lactamase class A KPC
+beta-lactamase,K18767,blaCTX-M, beta-lactamase class A CTX-M
+beta-lactamase,K18766,blaZ, beta-lactamase class A BlaZ
+beta-lactamase,K18699,blaSHV, beta-lactamase class A SHV
+beta-lactamase,K18698,blaTEM, beta-lactamase class A TEM
+beta-lactamase,K17838,oxa, beta-lactamase class D 
+beta-lactamase,K17836,penP, beta-lactamase class A 
+beta-lactamase,K01467,ampC, beta-lactamase class C 
+beta-lactamase,K01467,ampC,beta-lactamase class C
+beta-lactamase,K03806,ampD,N-acetyl-anhydromuramoyl-L-alanine amidase
+beta-lactamase,K03807,ampE;,AmpE protein
+biofilm formation - escherichia coli,K11935,pgaA, biofilm PGA synthesis protein PgaA          
+biofilm formation - escherichia coli,K11931,pgaB,"poly-beta-1,6-N-acetyl-D-glucosamine N-deacetylase"
+biofilm formation - escherichia coli,K04336,csgC,curli production protein           
+biofilm formation - escherichia coli,K04335,csgB,minor curlin subunit           
+biofilm formation - escherichia coli,K04334,csgA,major curlin subunit           
+biofilm formation - escherichia coli,K04333,csgD,"LuxR family transcriptional regulator, csgAB operon transcriptional regulatory protein     "
+biofilm formation - escherichia coli,K01991,wza,gfcE polysaccharide biosynthesis/export protein          
+Biofilm formation - pseudomonas aeruginosa,K21012,pelG,polysaccharide biosynthesis protein PelG          
+Biofilm formation - pseudomonas aeruginosa,K21011,pelF,polysaccharide biosynthesis protein PelF          
+Biofilm formation - pseudomonas aeruginosa,K21010,pelE,polysaccharide biosynthesis protein PelE          
+Biofilm formation - pseudomonas aeruginosa,K21009,pelD,polysaccharide biosynthesis protein PelD          
+Biofilm formation - pseudomonas aeruginosa,K21008,pelC,polysaccharide biosynthesis protein PelC          
+Biofilm formation - pseudomonas aeruginosa,K21007,pelB,polysaccharide biosynthesis protein PelB          
+Biofilm formation - pseudomonas aeruginosa,K21006,pelA,polysaccharide biosynthesis protein PelA          
+Biofilm formation - pseudomonas aeruginosa,K21005,pslL,polysaccharide biosynthesis protein PslL          
+Biofilm formation - pseudomonas aeruginosa,K21004,pslK,polysaccharide biosynthesis protein PslK          
+Biofilm formation - pseudomonas aeruginosa,K21003,pslJ,polysaccharide biosynthesis protein PslJ          
+Biofilm formation - pseudomonas aeruginosa,K21000,pslG,polysaccharide biosynthesis protein PslG          
+Biofilm formation - pseudomonas aeruginosa,K20998,pslE,polysaccharide biosynthesis protein PslE          
+Biofilm formation - pseudomonas aeruginosa,K20987,pslD,polysaccharide biosynthesis/export protein PslD          
+Biofilm formation - pseudomonas aeruginosa,K20968,exsA,"AraC family transcriptional regulator, exoenzyme S synthesis regulatory protein ExsA    "
+Biofilm formation - pseudomonas aeruginosa,K11913,fha1,type VI secretion system protein         
+Biofilm formation - pseudomonas aeruginosa,K11907,vasG,clpV type VI secretion system protein VasG       
+Biofilm formation - pseudomonas aeruginosa,K02660,pilJ,twitching motility protein PilJ          
+Biofilm formation - pseudomonas aeruginosa,K02659,pilI,twitching motility protein PilI          
+Biofilm formation - pseudomonas aeruginosa,K02658,pilH,twitching motility two-component system response regulator PilH       
+Biofilm formation - pseudomonas aeruginosa,K02657,pilG,twitching motility two-component system response regulator PilG       
+Biofilm formation - pseudomonas aeruginosa,K02398,flgM,negative regulator of flagellin synthesis FlgM        
+biofilm formation - vibrio cholerae,K20988,vpsN,polysaccharide biosynthesis/export protein VpsN          
+biofilm formation - vibrio cholerae,K20953,rbmA,rugosity and biofilm structure modulator A          
+biofilm formation - vibrio cholerae,K20952,rbmC,rugosity and biofilm structure modulator C          
+biofilm formation - vibrio cholerae,K20951,bap1,extracellular matrix protein           
+biofilm formation - vibrio cholerae,K20950,vpsQ,polysaccharide biosynthesis protein VpsQ          
+biofilm formation - vibrio cholerae,K20949,vpsP,polysaccharide biosynthesis protein VpsP          
+biofilm formation - vibrio cholerae,K20948,vpsJ,polysaccharide biosynthesis protein VpsJ          
+biofilm formation - vibrio cholerae,K20947,vpsF,polysaccharide biosynthesis protein VpsF          
+biofilm formation - vibrio cholerae,K20946,vpsE,polysaccharide biosynthesis protein VpsE          
+biofilm formation - vibrio cholerae,K20920,vpsM,polysaccharide biosynthesis protein VpsM          
+biofilm formation - vibrio cholerae,K16554,exoP,vpsO polysaccharide biosynthesis transport protein [EC:2.7.10.3]        
+biofilm formation - vibrio cholerae,K10941,flrA,"fleQ, flaK sigma-54 dependent transcriptional regulator, flagellar regulatory protein     "
+biofilm formation - vibrio cholerae,K10929,ctxB,cholera enterotoxin subunit B          
+biofilm formation - vibrio cholerae,K10928,ctxA,cholera enterotoxin subunit A [EC:2.4.2.36]         
+biofilm formation - vibrio cholerae,K08604,hap,nprV vibriolysin [EC:3.4.24.25]           
+biofilm formation - vibrio cholerae,K03092,rpoN,RNA polymerase sigma-54 factor          
+biofilm formation - vibrio cholerae,K03087,rpoS,RNA polymerase nonessential primary-like sigma factor        
+biofilms,K21429,impA,immunomodulating protease
+exopolysaccharide,K25885,exoR,exopolysaccharide production negative regulator          
+exopolysaccharide,K16567,exoQ,exopolysaccharide production protein ExoQ          
+exopolysaccharide,K16565,exoX,syrA  exopolysaccharide production regulatory protein         
+exopolysaccharide biosynthesis,K25913,pssK,exopolysaccharide biosynthesis protein PssK          
+exopolysaccharide biosynthesis,K25912,pssR,exopolysaccharide acyltransferase PssR           
+exopolysaccharide biosynthesis,K25911,pssJ,exopolysaccharide biosynthesis galactosyltransferase PssJ          
+exopolysaccharide biosynthesis,K25910,pssH,exopolysaccharide biosynthesis glycosyltransferase PssH          
+exopolysaccharide biosynthesis,K25909,pssG,exopolysaccharide biosynthesis glycosyltransferase PssG          
+exopolysaccharide biosynthesis,K25908,pssI,exopolysaccharide biosynthesis glycosyltransferase PssI          
+exopolysaccharide biosynthesis,K25907,pssF,exopolysaccharide biosynthesis glycosyltransferase PssF          
+exopolysaccharide biosynthesis,K25906,pssS,exopolysaccharide biosynthesis glucosyltransferase PssS [EC:2.4.1.-]         
+exopolysaccharide biosynthesis,K25905,pssC,exopolysaccharide biosynthesis glycosyltransferase PssC          
+exopolysaccharide biosynthesis,K25904,pssE,exopolysaccharide biosynthesis glucuronosyltransferase PssE          
+exopolysaccharide biosynthesis,K25903,pssD,exopolysaccharide biosynthesis glucuronosyltransferase PssD          
+exopolysaccharide biosynthesis,K25902,pssA,acidic exopolysaccharide biosynthesis protein PssA         
+exopolysaccharide biosynthesis,K25886,vpsK,polysaccharide biosynthesis protein VpsK          
+exopolysaccharide biosynthesis,K25205,pslC,polysaccharide biosynthesis protein PslC          
+exopolysaccharide biosynthesis,K21154,pssM,exopolysaccharide glucosyl ketal-pyruvate-transferase [EC:2.5.1.98]          
+exopolysaccharide biosynthesis,K21002,pslI,polysaccharide biosynthesis protein PslI          
+exopolysaccharide biosynthesis,K21001,pslH,polysaccharide biosynthesis protein PslH          
+exopolysaccharide biosynthesis,K20999,pslF,polysaccharide biosynthesis protein PslF          
+exopolysaccharide biosynthesis,K20997,pslA,polysaccharide biosynthesis protein PslA          
+exopolysaccharide biosynthesis,K20922,vpsI,polysaccharide biosynthesis protein VpsI          
+exopolysaccharide biosynthesis,K20921,vpsD,epsF polysaccharide biosynthesis protein VpsD         
+exopolysaccharide biosynthesis,K19433,tasA,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19431,EpsO,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19430,EpsN,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19429,EpsM,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19428,EpsL,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19427,EpsJ,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19426,EpsI,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19425,EpsH,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19419,epsG,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19424,epsF,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19423,epsE,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19422,EpsD,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19421,EpsC,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19420,EpsE,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19417,EpsG,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K19296,algF,alginate O-acetyltransferase complex protein AlgF         
+exopolysaccharide biosynthesis,K19295,algJ,alginate O-acetyltransferase complex protein AlgJ         
+exopolysaccharide biosynthesis,K19294,algI,alginate O-acetyltransferase complex protein AlgI         
+exopolysaccharide biosynthesis,K19293,algX,alginate biosynthesis protein AlgX          
+exopolysaccharide biosynthesis,K16713,EpsF,exopolysaccharide biosynthesis
+exopolysaccharide biosynthesis,K16568,exoZ,exopolysaccharide production protein ExoZ          
+exopolysaccharide biosynthesis,K16566,exoY,exopolysaccharide production protein ExoY          
+exopolysaccharide biosynthesis,K16564,exoU,succinoglycan biosynthesis protein ExoU [EC:2.4.-.-]         
+exopolysaccharide biosynthesis,K16563,exoV,succinoglycan biosynthesis protein ExoV          
+exopolysaccharide biosynthesis,K16562,exoW,succinoglycan biosynthesis protein ExoW [EC:2.4.-.-]         
+exopolysaccharide biosynthesis,K16560,exoH,succinoglycan biosynthesis protein ExoH          
+exopolysaccharide biosynthesis,K16558,exoL,succinoglycan biosynthesis protein ExoL [EC:2.-.-.-]         
+exopolysaccharide biosynthesis,K16557,exoA,succinoglycan biosynthesis protein ExoA [EC:2.4.-.-]         
+exopolysaccharide biosynthesis,K16556,exoM,succinoglycan biosynthesis protein ExoM [EC:2.4.-.-]         
+exopolysaccharide biosynthesis,K16555,exoO,succinoglycan biosynthesis protein ExoO [EC:2.4.-.-]         
+exopolysaccharide biosynthesis,K11937,pgaD, biofilm PGA synthesis protein PgaD          
+exopolysaccharide biosynthesis,K06338,tasA,exopolysaccharide biosynthesis
+extracellular matrix,K24648,remB, extracellular matrix regulatory protein B           
+extracellular matrix,K23867,ECM1, extracellular matrix protein 1            
+extracellular matrix,K23383,FREM3,FRAS1-related extracellular matrix protein 3            
+extracellular matrix,K19866,EFEMP2,EGF-containing fibulin-like extracellular matrix protein 2           
+extracellular matrix,K18262,EFEMP1,FBLN3 EGF-containing fibulin-like extracellular matrix protein 1          
+extracellular matrix,K09777,remA, extracellular matrix regulatory protein A           
+extracellular matrix,K08783,ECM14, extracellular matrix protein 14 [EC:3.4.17.-]           
+extracellular matrix,K08119,ECM2, extracellular matrix protein 2            
+quorum sensing,K20940,phzS,5-methylphenazine-1-carboxylate 1-monooxygenase
+quorum sensing,K23133,comC,competence-stimulating peptide            
+quorum sensing,K22968,sinI,avsI acyl homoserine lactone synthase [EC:2.3.1.184]        
+quorum sensing,K22954,luxI,acyl homoserine lactone synthase [EC:2.3.1.184]         
+quorum sensing,K20389,phrH,phosphatase RapH regulator           
+quorum sensing,K20277,bcl,mannose-binding lectin            
+quorum sensing,K20262,phzG,dihydrophenazinedicarboxylate synthase [EC:1.10.3.16]           
+quorum sensing,K20261,phzD,"trans-2,3-dihydro-3-hydroxyanthranilic acid synthase [EC:3.3.2.15]          "
+quorum sensing,K20260,phzA_B,phenazine biosynthesis protein           
+quorum sensing,K20259,lecB,PA-IIL fucose-binding lectin           
+quorum sensing,K20258,lecA,PA-I galactophilic lectin           
+quorum sensing,K20257,pqsE,2-aminobenzoylacetyl-CoA thioesterase [EC:3.1.2.32]           
+quorum sensing,K20256,luxG,flavin reductase [EC:1.-.-.-]           
+quorum sensing,K20090,vioC,violacein synthase [EC:1.14.13.224]           
+quorum sensing,K20089,vioD,protodeoxyviolaceinate monooxygenase [EC:1.14.13.217]           
+quorum sensing,K20088,vioE,violacein biosynthesis protein VioE          
+quorum sensing,K20087,vioB,violacein biosynthesis protein VioB          
+quorum sensing,K20086,vioA,tryptophan oxidase VioA [EC:1.4.3.-]          
+quorum sensing,K19733,sinR,"avsR LuxR family transcriptional regulator, quorum-sensing system regulator SinR     "
+quorum sensing,K18304,lasR,"LuxR family transcriptional regulator, quorum-sensing system regulator LasR      "
+quorum sensing,K18101,rhlB,rhamnosyltransferase subunit B [EC:2.4.1.-]          
+quorum sensing,K18100,rhlA,rhamnosyltransferase subunit A [EC:2.4.1.-]          
+quorum sensing,K18099,rhlR,"phzR LuxR family transcriptional regulator, quorum-sensing system regulator RhlR     "
+quorum sensing,K18003,pqsD,anthraniloyl-CoA anthraniloyltransferase [EC:2.3.1.262]           
+quorum sensing,K18002,pqsC,2-heptyl-4(1H)-quinolone synthase subunit PqsC [EC:2.3.1.230]         
+quorum sensing,K18001,pqsB,2-heptyl-4(1H)-quinolone synthase subunit PqsB [EC:2.3.1.230]         
+quorum sensing,K18000,pqsA,anthranilate-CoA ligase [EC:6.2.1.32]           
+quorum sensing,K17940,pqsH,2-heptyl-3-hydroxy-4(1H)-quinolone synthase [EC:1.14.13.182]           
+quorum sensing,K15854,luxB,alkanal monooxygenase beta chain [EC:1.14.14.3]         
+quorum sensing,K15853,luxD,acyl transferase [EC:2.3.1.-]           
+quorum sensing,K15852,luxR,"vanR LuxR family transcriptional regulator, transcriptional activator of the bioluminescence operon   "
+quorum sensing,K15850,luxN,"two-component system, autoinducer 1 sensor kinase/phosphatase LuxN [EC:2.7.13.3 3.1.3.-]      "
+quorum sensing,K15657,srfATE,"srfAD, lchAD external thioesterase TEII         "
+quorum sensing,K15656,srfAC,"licC, lchAC surfactin/lichenysin synthetase C         "
+quorum sensing,K15655,srfAB,"licB, lchAB surfactin/lichenysin synthetase B         "
+quorum sensing,K15654,srfAA,"licA, lchAA surfactin/lichenysin synthetase A         "
+quorum sensing,K13063,phzE,2-amino-4-deoxychorismate synthase [EC:2.6.1.86]           
+quorum sensing,K13061,rhlI,"phzI, solI, cepI, tofI acyl homoserine lactone synthase [EC:2.3.1.184]     "
+quorum sensing,K13060,lasI,acyl homoserine lactone synthase [EC:2.3.1.184]         
+quorum sensing,K12990,rhamnosyltransferase,exopolysaccharide biosynthesis
+quorum sensing,K12415,comC,competence-stimulating peptide            
+quorum sensing,K12296,comX1_2,competence protein ComX           
+quorum sensing,K12293,comB,competence factor transport accessory protein ComB        
+quorum sensing,K10912,luxO,"two-component system, repressor protein LuxO         "
+quorum sensing,K10911,luxU,"two-component system, phosphorelay protein LuxU         "
+quorum sensing,K10910,luxP,autoinducer 2-binding periplasmic protein LuxP         
+quorum sensing,K10909,luxQ,"two-component system, autoinducer 2 sensor kinase/phosphatase LuxQ [EC:2.7.13.3 3.1.3.-]      "
+quorum sensing,K10816,HcnC,cyanide
+quorum sensing,K10815,HcnB,cyanide
+quorum sensing,K10814,HcnA,cyanide
+quorum sensing,K08642,lasA,LasA protease [EC:3.4.24.-]           
+quorum sensing,K07699,spo0A,"two-component system, response regulator, stage 0 sporulation protein A     "
+quorum sensing,K07692,degU,"two-component system, NarL family, response regulator DegU       "
+quorum sensing,K07173,luxS,S-ribosylhomocysteine lyase [EC:4.4.1.21]           
+quorum sensing,K06998,phzF,"trans-2,3-dihydro-3-hydroxyanthranilate isomerase [EC:5.3.3.17]           "
+quorum sensing,K06375,spo0B,stage 0 sporulation protein B (sporulation initiation phosphotransferase) [EC:2.7.-.-]     
+quorum sensing,K06358,phrK,phosphatase RapK regulator           
+quorum sensing,K06356,phrG,phosphatase RapG regulator           
+quorum sensing,K06355,phrF,phosphatase RapF regulator           
+quorum sensing,K06354,phrE,phosphatase RapE regulator           
+quorum sensing,K06353,phrC,phosphatase RapC regulator           
+quorum sensing,K06352,phrA,phosphatase RapA inhibitor           
+quorum sensing,K06046,luxE,long-chain-fatty-acid---luciferin-component ligase [EC:6.2.1.19]           
+quorum sensing,K03400,luxC,long-chain-fatty-acyl-CoA reductase [EC:1.2.1.50]           
+quorum sensing,K02490,spo0F,"two-component system, response regulator, stage 0 sporulation protein F     "
+quorum sensing,K02403,flhD,flagellar transcriptional activator FlhD          
+quorum sensing,K02402,flhC,flagellar transcriptional activator FlhC          
+quorum sensing,K02253,comX,competence protein ComX           
+quorum sensing,K02252,comS,competence protein ComS           
+quorum sensing,K02251,comQ,competence protein ComQ           
+quorum sensing,K02250,comK,competence protein ComK           
+quorum sensing,K01728,pel,pectate lyase [EC:4.2.2.2]           
+quorum sensing,K01399,lasB,pseudolysin [EC:3.4.24.26]            
+quorum sensing,K00494,luxA,alkanal monooxygenase alpha chain [EC:1.14.14.3]         
+quorum sensing,K07782,sdiA,luxR quorum sensing transcriptional regulator
+quorum sensing,K18098,bjaR1,luxR quorum sensing transcriptional regulator
+quorum sensing,K18099,rhlR,luxR quorum sensing transcriptional regulator
+quorum sensing,K18304,lasR,luxR quorum sensing transcriptional regulator
+quorum sensing,K19666,solR,luxR quorum sensing transcriptional regulator
+quorum sensing,K19731,cciR,luxR quorum sensing transcriptional regulator
+quorum sensing,K19733,sinR,luxR quorum sensing transcriptional regulator
+quorum sensing,K19734,expR,luxR quorum sensing transcriptional regulator
+quorum sensing,K20252,cinR,luxR quorum sensing transcriptional regulator
+quorum sensing,K20253,bisR,luxR quorum sensing transcriptional regulator
+quorum sensing,K20334,cviR,luxR quorum sensing transcriptional regulator
+quorum sensing,K20540,cepR2,luxR quorum sensing transcriptional regulator
+quorum sensing,K21697,vjbR,luxR quorum sensing transcriptional regulator
+quorum sensing,K25873,raiR,luxR quorum sensing transcriptional regulator
+rhamnolipid,K00067,rmlD,dTDP-4-dehydrorhamnose reductase
+rhamnolipid,K01790,rmlC,dTDP-4-dehydrorhamnose
+rhamnolipid,K23987,rmlCD,"dTDP-4-dehydrorhamnose 3,5-epimerase/reductase"
+siderophore,K25286,fagD,"cchF, irp1A, piaA iron-siderophore transport system substrate-binding protein       "
+siderophore,K25285,yclP,ceuD iron-siderophore transport system ATP-binding protein [EC:7.2.2.-]        
+siderophore,K25284,yclN,ceuB iron-siderophore transport system permease protein         
+siderophore,K25283,yclO,ceuC iron-siderophore transport system permease protein         
+siderophore,K25282,yclQ,ceuA iron-siderophore transport system substrate-binding protein         
+siderophore,K25130,fecE,cbrD iron-siderophore transport system ATP-binding protein [EC:7.2.2.-]        
+siderophore,K25111,sirC,"fecD, cbrC iron-siderophore transport system permease protein        "
+siderophore,K25110,sirB,"fecC, cbrB iron-siderophore transport system permease protein        "
+siderophore,K25109,sirA,"fecB, cbrA iron-siderophore transport system substrate-binding protein        "
+siderophore,K24112,asbE,petrobactin synthase [EC:2.-.-.-]           
+siderophore,K23188,fepC,"fagC, cchE, desF iron-siderophore transport system ATP-binding protein [EC:7.2.2.17 7.2.2.-]      "
+siderophore,K23187,fepG,"fagB, cchD, desG iron-siderophore transport system permease protein       "
+siderophore,K23186,fepD,"fagA, cchC, desH iron-siderophore transport system permease protein       "
+siderophore,K16090,fiu,catecholate siderophore receptor             
+siderophore,K12241,pchG,pyochelin biosynthesis protein PchG          
+siderophore,K08225,entS,"MFS transporter, ENTS family, enterobactin (siderophore) exporter       "
+siderophore,K08197,ARN,"MFS transporter, SIT family, siderophore-iron:H+ symporter         "
+siderophore,K04778,vibH,vibriobactin synthetase            
+siderophore,K02362,entD,enterobactin synthetase component D [EC:6.3.2.14 2.7.8.-]         
+siderophore,K12241,pchG,pyochelin biosynthesis protein PchG
+siderophore,K12242,pchC,pyochelin biosynthesis protein PchC
+siderophore,K12243,pchR,"AraC family transcriptional regulator, transcriptional activator of the genes for pyochelin and ferripyochelin receptors"
+type II secretion,K02450,gspA, general secretion pathway protein A
+type II secretion,K02451,gspB, general secretion pathway protein B
+type II secretion,K02452,gspC, general secretion pathway protein C
+type II secretion,K02453,gspD, general secretion pathway protein D
+type II secretion,K02454,gspE, general secretion pathway protein E
+type II secretion,K02455,gspF, general secretion pathway protein F
+type II secretion,K02456,gspG, general secretion pathway protein G
+type II secretion,K02457,gspH, general secretion pathway protein H
+type II secretion,K02458,gspI, general secretion pathway protein I
+type II secretion,K02459,gspJ, general secretion pathway protein J
+type II secretion,K02460,gspK, general secretion pathway protein K
+type II secretion,K02461,gspL, general secretion pathway protein L
+type II secretion,K02462,gspM, general secretion pathway protein M
+type II secretion,K02463,gspN, general secretion pathway protein N
+type II secretion,K02464,gspO, general secretion pathway protein O
+type II secretion,K02465,gspS, general secretion pathway protein S
+type IV pili,K02650,pilA, type IV pilus assembly protein
+type IV pili,K02651,pilA, pilus assembly protein
+type IV pili,K02652,pilB, type IV pilus assembly protein
+type IV pili,K02653,pilC, type IV pilus assembly protein
+type IV pili,K02655,pilE, type IV pilus assembly protein 
+type IV pili,K02656,pilF, type IV pilus assembly protein 
+type IV pili,K02661,pilK, type IV pilus assembly protein
+type IV pili,K02662,pilM, type IV pilus assembly protein
+type IV pili,K02663,pilN, type IV pilus assembly protein
+type IV pili,K02664,pilO, type IV pilus assembly protein 
+type IV pili,K02665,pilP, type IV pilus assembly protein
+type IV pili,K02666,pilQ, type IV pilus assembly protein 
+type IV pili,K02671,pilV, type IV pilus assembly protein
+type IV pili,K02672,pilW, type IV pilus assembly protein 
+type IV pili,K02673,pilX, type IV pilus assembly protein
+type IV pili,K02674,pilY1, type IV pilus assembly protein
+type IV pili,K02675,pilY2, type IV pilus assembly protein
+type IV pili,K02676,pilZ, type IV pilus assembly protein
