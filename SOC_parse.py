@@ -239,7 +239,8 @@ os.chdir(base_dir)
 # make output matrix
 BIGGERLIST = pd.DataFrame(columns=["gene_kind", "product", "locus_tag", "protein_id", "region"])
 # make list of region gbk files
-files = [f for f in os.listdir() if f.endswith('.gbk')]
+#files = [f for f in os.listdir() if f.endswith('.gbk')]
+files = [f for f in os.listdir() if f.endswith('.gbk') and 'region' in f]
 #### extract antismash type first, as its hard to do later
 PROD = [None] * len(files)
 
@@ -319,6 +320,8 @@ for j in range(len(files)):
         else:
             prod = '' # or whatever default value you want
         # locus tag
+        lt = []  # Define lt as an empty list before the loop
+        pid = []
         if len(bb) > 0:
             lt = re.sub('\\.*locus_tag=', '', vec[cc[0]], flags=re.IGNORECASE).strip().replace(' ', '').replace('/', '')
         #protein_id
@@ -329,7 +332,7 @@ for j in range(len(files)):
         if len(prod) > 0:
             BIGLIST.iloc[i,1] = PROD[j]
         if len(lt) > 0:
-            BIGLIST.iloc[i,2] = lt
+            BIGLIST.iloc[i, 2] = lt
         if len(pid) > 0:
             BIGLIST.iloc[i,3] = pid
         BIGLIST.iloc[:,4] = j
