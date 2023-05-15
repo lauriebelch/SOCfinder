@@ -13,7 +13,7 @@ some code
 ```
 
 ## make BLAST databases
-
+-- provide a python script to make the blast databases
 
 ## Tutorial
 
