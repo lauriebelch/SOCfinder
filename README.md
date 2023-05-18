@@ -17,20 +17,52 @@ cd SOCfinder
 conda env create -f environment.yml
 ```
 
-## Install KOFAMscan
+## Download KOFAMscan files
 
-You might need to manually install KOFAMscan (its included in the conda packages, but I'm not sure)
+You will need to download some required files for KOFAMscan. It is reccommended that you do this within the SOCfinder folder
 
-You will need to edit the config.yml file in KOFAMscan
+```bash
+mkdir KOFAM
+cd ./KOFAM
+wget ftp://ftp.genome.jp/pub/db/kofam/ko_list.gz
+wget ftp://ftp.genome.jp/pub/db/kofam/profiles.tar.gz
+wget ftp://ftp.genome.jp/pub/tools/kofam_scan/kofam_scan-1.3.0.tar.gz
+wget https://www.genome.jp/ftp/tools/kofam_scan/README.md
+tar -xf profiles.tar.gz
+tar -xf kofam_scan-1.3.0.tar.gz
+gunzip ko_list.gz
+```
+You will also need to edit the config file
 
+```bash
+pwd 
+```
+For me its /drives/Laurie/KOFAM
+```bash
+cd ./kofam_scan-1.3.0/
+nano config-template.yml
+```
+on line 4, change it to
+```bash
+profile: /drives/Laurie/KOFAM/profiles
+```
+on line 7, change it to 
+```bash
+ko_list: /drives/4tb/Laurie/KOFAM/ko_list
+```
+on line 18, change it to
+```bash
+cpu: 32
+```
+ctrl-O and save as ‘config.yml’
 
-- altering KOFAM config file
+You will also need to add the exec_annotation file to your path
 
-You might need to add the exec_annotation file from KOFAMscan to your path
-
-
-
-
+```bash
+nano ~/.bash_profile
+export PATH="/path/to/kofam_scan-1.3.0:$PATH"
+```
+ctrl-O to save
 
 ## make BLAST databases
 
