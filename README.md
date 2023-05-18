@@ -3,6 +3,10 @@
 
 SOCfinder is a bioinformatics tool for finding cooperative genes in bacterial genomes. SOCfinder combines information from several methods, considering if a gene is likely to: (1) code for an extracellular protein; (2) have a cooperative functional annotation; or (3) be part of the biosynthesis of a cooperative secondary metabolite. SOCfinder uses information on the quality and significance of database matches and annotations.
 
+## Table of ceontents
+- [Installation](#Installation)
+- [Options](#User Options)
+
 ## Installation
 
 The easiest way to install is to clone this github page, or download the zip file https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
