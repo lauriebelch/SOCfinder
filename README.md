@@ -4,12 +4,9 @@ SOCfinder is a tool for finding cooperative genes in bacterial genomes.
 
 ## Installation
 
-There are several prerequisities:
---list them --
-- python version3.10
-- lots of other tools and packages
-- adding KOFAM to path
-- altering KOFAM config file
+The easiest way to install is to clone this github page, or download the zip file https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
+
+You can then use the environment.yml file to create a conda environment with most of the required packages and tools
 
 ## Download SOCfinder scripts
 
@@ -18,6 +15,21 @@ git clone https://github.com/lauriebelch/SOCfinder.git
 cd SOCfinder
 conda env create -f environment.yml
 ```
+
+## Install KOFAMscan
+
+You might need to manually install KOFAMscan (its included in the conda packages, but I'm not sure)
+
+You will need to edit the config.yml file in KOFAMscan
+
+
+- altering KOFAM config file
+
+You might need to add the exec_annotation file from KOFAMscan to your path
+
+
+
+
 
 ## make BLAST databases
 
