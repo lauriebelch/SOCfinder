@@ -36,6 +36,11 @@ https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
 ./SOC_mine.py -g test/P_salmonis.faa -f test/P_salmonis.fna -gff test/P_salmonis.gff -O P_salmonis -n 
 ```
 
+## Options
+- Option 1: Description of option 1
+- Option 2: Description of option 2
+
+
 ## Download genomes
 
 -- Reccommended way is to use the download datasets package. This is so that gene ID is the same in protein fasta, nucleotide fasta, and gff. Otherwise users will have to check the gene ID .
