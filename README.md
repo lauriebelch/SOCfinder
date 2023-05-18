@@ -9,20 +9,26 @@ There are several prerequisities:
 
 ## Download SOCfinder scripts
 ```bash
-some code
+https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
 ```
 
 ## make BLAST databases
--- provide a python script to make the blast databases
+```bash
+./SOC_MakeBlastDB.py
+```
 
 ## Tutorial
 
--- explain the files it needs, and where they are
-
+-- Part 1: Mine the Genome
 ```python
-./SOC_mine.py -g test2/P_salmonis.faa -f test2/P_salmonis.fna -gff test2/P_salmonis.gff3 -O P_salmonis_kofam.txt -n
+./SOC_parse.py -ac CP013821.1 -i P_salmonis/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
+./SOC_parse.py -ac CP002703.1 -i B_aphidicola/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
+```
 
-./SOC_parse.py -ki P_salmonis_kofam.txt -b blast_outputs/ -ad P_salmonis/ -ac NZ_CP013821.1 -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv -so socks.csv -ko kofam.csv -ao antismash.csv -bo blast.csv
+-- Part 2: Extract the Social Genes
+```python
+./SOC_mine.py -g test/B_aphidicola.faa -f test/B_aphidicola.fna -gff test/B_aphidicola.gff -O B_aphidicola2 -n
+./SOC_mine.py -g test/P_salmonis.faa -f test/P_salmonis.fna -gff test/P_salmonis.gff -O P_salmonis -n 
 ```
 
 ## Download genomes
