@@ -64,7 +64,7 @@ export PATH="/path/to/kofam_scan-1.3.0:$PATH"
 ```
 ctrl-O to save
 
-## Install antismash
+## Download antismash files
 
 You will need to download some required files for ANTISMASH. It is reccommended that you do this within the SOCfinder folder
 
@@ -76,6 +76,13 @@ tar -zxf antismash-6.1.1.tar.gz
 pip install ./antismash-6.1.1
 python antismash-6.1.1/antismash/download_databases.py
 ```
+You will need to add antismash to your path
+```bash
+nano ~/.bash_profile
+export PATH="/path/to/antismash-6.1.1/antismash:$PATH"
+export PATH="/path/to/antismash-6.1.1:$PATH"
+```
+ctrl+o to save
 
 ## make BLAST databases
 
