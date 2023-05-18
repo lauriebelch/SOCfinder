@@ -5,7 +5,7 @@ SOCfinder is a bioinformatics tool for finding cooperative genes in bacterial ge
 
 ## Table of ceontents
 - [Installation](#Installation)
-- [Options](#User Options)
+- [Options](#Options)
 
 ## Installation
 
@@ -111,7 +111,7 @@ Here are some genomes blah blah
 ./SOC_mine.py -g test/P_salmonis.faa -f test/P_salmonis.fna -gff test/P_salmonis.gff -O P_salmonis -n 
 ```
 
-## User Options
+## Options
 
 **SOC_mine.py**
 
