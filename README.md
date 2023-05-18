@@ -64,6 +64,19 @@ export PATH="/path/to/kofam_scan-1.3.0:$PATH"
 ```
 ctrl-O to save
 
+## Install antismash
+
+You will need to download some required files for ANTISMASH. It is reccommended that you do this within the SOCfinder folder
+
+```bash
+mkdir ANTISMASH
+cd ./ANTISMASH 
+wget https://dl.secondarymetabolites.org/releases/6.1.1/antismash-6.1.1.tar.gz
+tar -zxf antismash-6.1.1.tar.gz
+pip install ./antismash-6.1.1
+python antismash-6.1.1/antismash/download_databases.py
+```
+
 ## make BLAST databases
 
 You will need to build the databases that the BLAST search uses
@@ -131,4 +144,4 @@ to discuss what you would like to change.
 
 ## License
 
-Free to use
+Free to use, but please cite the SOCfinder paper
