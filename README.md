@@ -12,8 +12,11 @@ There are several prerequisities:
 - altering KOFAM config file
 
 ## Download SOCfinder scripts
+
 ```bash
-https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
+git clone https://github.com/lauriebelch/SOCfinder.git
+cd SOCfinder
+conda env create -f environment.yml
 ```
 
 ## make BLAST databases
@@ -66,7 +69,11 @@ Here are some genomes blah blah
 
 ## How to download genomes
 
--- Reccommended way is to use the download datasets package. This is so that gene ID is the same in protein fasta, nucleotide fasta, and gff. Otherwise users will have to check the gene ID .
+The SOCfinder reccommended way to download the genome files you need is to use the [NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/download-and-install/?utm_source=ncbi_insights&utm_medium=referral&utm_campaign=datasets-command-line-20221012) command line tool. This is so that gene ID is the same in protein fasta, nucleotide fasta, and gff. Otherwise users will have to check the gene ID .
+
+```python
+datasets download genome accession GCA_003798305.1 --include gff3,genome,protein
+```
 
 ## Manuscript
 
