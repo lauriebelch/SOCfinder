@@ -1,6 +1,7 @@
-
+**SOCFinder**
 ![SOCfinder](Soc_finder_v4.png)
-SOCfinder is a tool for finding cooperative genes in bacterial genomes.
+
+SOCfinder is a bioinformatics tool for finding cooperative genes in bacterial genomes. SOCfinder combines information from several methods, considering if a gene is likely to: (1) code for an extracellular protein; (2) have a cooperative functional annotation; or (3) be part of the biosynthesis of a cooperative secondary metabolite. SOCfinder uses information on the quality and significance of database matches and annotations.
 
 ## Installation
 
