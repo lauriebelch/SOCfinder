@@ -48,10 +48,10 @@ https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
   - Path to GENOME gff file (.gff)
 - `-O outputfolder`
   - Name of output folder
-- `-p | -n GramPositive | GramNegative`
+- `-p -n GramPositive | GramNegative`
   - Gram stain (positive | negative)
 
-**SOC_parse.py
+**SOC_parse.py**
 - `-i inputfolder`
   - Path to input folder from SOC_mine
 - `-ac accession`
