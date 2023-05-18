@@ -131,4 +131,4 @@ to discuss what you would like to change.
 
 ## License
 
-Free to use
+Free to use, but please cite the SOCfinder paper
