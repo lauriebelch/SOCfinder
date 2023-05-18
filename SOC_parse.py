@@ -32,38 +32,29 @@ parser = argparse.ArgumentParser(description='SOCfinder parser')
 
 # Add command-line arguments with flags and help messages
 parser._optionals.title = 'Required arguments'
-parser.add_argument('-ki', '--KOFAMinput', type=str, metavar='.', required=True, help='Path to KOFAM input')
-parser.add_argument('-b', '--BLASTinput', type=str, metavar='.', required=True, help='Path to BLAST input folder')
-parser.add_argument('-ad', '--ANTISMASHRegionGBK', metavar='.', type=str, required=True, help='Path to directory of region_gbk files')
+parser.add_argument('-i', '--inputfolder', type=str, metavar='.', required=True, help='Name of input folder')
 parser.add_argument('-ac', '--accession', type=str, metavar='.', required=True, help='Accession number of the genome')
 parser.add_argument('-k', '--KO', type=str, required=True, metavar='.', help='Path to Social KO file')
 parser.add_argument('-a', '--ANTISMASHtypes', type=str, required=True, metavar='.', help='Path to list of ANTISMASH types')
-parser.add_argument('-so', '--SOCKfile', type=str, required=True, metavar='.', help='Name of final list of cooperative genes (csv)')
-parser.add_argument('-ko', '--KOFAMoutput', type=str, required=True, metavar='.', help='Name of KOFAM output csv')
-parser.add_argument('-ao', '--ANTISMASHoutput', type=str, required=True, metavar='.', help='Name of ANTISMASH output csv')
-parser.add_argument('-bo', '--BLASToutput', type=str, required=True, metavar='.', help='Name of BLAST output csv')
-#parser.add_argument('-s', '--score', type=float, help='Numerical score')
-#parser.add_argument('-y', '--helloworld', action='store_true', help='Print "Hello World"')
 
 # Parse the command-line arguments
 args = parser.parse_args()
 
 # Access the values of the command-line arguments
-inputpath = args.KOFAMinput
-outputpath = args.KOFAMoutput
-kpath = args.KO
+inputfolder = args.inputfolder
 antismashtypes = args.ANTISMASHtypes
-antismashoutputpath = args.ANTISMASHoutput
 accession = args.accession
-antismashdirectory = args.ANTISMASHRegionGBK
-blastinputfolder = args.BLASTinput
-blastoutputpath = args.BLASToutput
-SOCKSS = args.SOCKfile
-#score = args.score
+kpath = args.KO
 
-# Code if we had an option like y that we can turn on or off
-#if args.helloworld:
- #   print("Hello World")
+# make required paths
+directory_name = inputfolder
+inputpath = os.path.join(directory_name, "kofam.txt")
+outputpath = os.path.join(directory_name, "K_SOCK.csv")
+blastinputfolder = os.path.join(directory_name, "blast_outputs")
+blastoutputpath = os.path.join(directory_name, "B_SOCK.csv")
+antismashoutputpath = os.path.join(directory_name, "A_SOCK.csv")
+antismashdirectory = os.path.join(directory_name, "anti_smash")
+SOCKSS = os.path.join(directory_name, "SOCKS.csv")
 
 # store directory that script is running in
 script_path = os.path.dirname(os.path.abspath(sys.argv[0]))
@@ -87,7 +78,7 @@ data = data.loc[data["#"] == "*", :]
 
 # count social genes in kofamscan output
 soc = data.loc[data["KO"].isin(sock["term"]), :]
-print(len(soc["gene name"].unique())) # 103 bacillus social genes
+#print(len(soc["gene name"].unique()))
 
 # remove duplicates
 socks = soc.iloc[:, 1].unique()
@@ -206,7 +197,9 @@ if len(temp) > 0:
     data = data.loc[temp]
     new = data['query_acc'].unique()
     new = new.tolist()
-    SOCK = SOCK.append(new)
+    #SOCK = SOCK.append(new)
+    new_df = pd.DataFrame(new)  # Convert list to DataFrame
+    SOCK = pd.concat([SOCK, new_df], ignore_index=True)
 
 def combine_columns(row):
     values = [str(val) for val in row if not pd.isna(val)]
@@ -216,7 +209,7 @@ def combine_columns(row):
 SOCK['combined'] = SOCK.apply(combine_columns, axis=1)   
  
 blastE = SOCK['combined'].unique()
-print(len(blastE)) # how many extracellular proteins are there
+#print(len(blastE)) # how many extracellular proteins are there
 # save output
 blastE_list = blastE.tolist()
 os.chdir(script_path)
@@ -227,6 +220,7 @@ pd.DataFrame(blastE_list).to_csv(outfile, index=False)
 ######################################################################
 
 # load list of antismash types
+
 types_dir = antismashtypes
 antismash_types = pd.read_csv(types_dir,encoding='latin-1')
 
@@ -370,9 +364,6 @@ os.remove(FILEOUT)
 
 ## code that loads the three output csv, and combines into one
 os.chdir(script_path)
-FILEOUT = "antismash.csv"
-outputpath = "kofam.csv"
-blastoutputpath = "blast.csv"
 data_a = pd.read_csv(FILEOUT[:-4] + "_filtered.csv")
 data_a = pd.DataFrame(data_a['protein_id'])
 data_k = pd.read_csv(outputpath)
