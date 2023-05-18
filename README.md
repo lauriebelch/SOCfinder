@@ -1,20 +1,68 @@
-
+**SOCFinder**
 ![SOCfinder](Soc_finder_v4.png)
-SOCfinder is a tool for finding cooperative genes in bacterial genomes.
+
+SOCfinder is a bioinformatics tool for finding cooperative genes in bacterial genomes. SOCfinder combines information from several methods, considering if a gene is likely to: (1) code for an extracellular protein; (2) have a cooperative functional annotation; or (3) be part of the biosynthesis of a cooperative secondary metabolite. SOCfinder uses information on the quality and significance of database matches and annotations.
 
 ## Installation
 
-There are several prerequisities:
---list them --
-- python version3.10
-- lots of other tools and packages
-- adding KOFAM to path
-- altering KOFAM config file
+The easiest way to install is to clone this github page, or download the zip file https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
+
+You can then use the environment.yml file to create a conda environment with most of the required packages and tools
 
 ## Download SOCfinder scripts
+
 ```bash
-https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
+git clone https://github.com/lauriebelch/SOCfinder.git
+cd SOCfinder
+conda env create -f environment.yml
 ```
+
+## Download KOFAMscan files
+
+You will need to download some required files for KOFAMscan. It is reccommended that you do this within the SOCfinder folder
+
+```bash
+mkdir KOFAM
+cd ./KOFAM
+wget ftp://ftp.genome.jp/pub/db/kofam/ko_list.gz
+wget ftp://ftp.genome.jp/pub/db/kofam/profiles.tar.gz
+wget ftp://ftp.genome.jp/pub/tools/kofam_scan/kofam_scan-1.3.0.tar.gz
+wget https://www.genome.jp/ftp/tools/kofam_scan/README.md
+tar -xf profiles.tar.gz
+tar -xf kofam_scan-1.3.0.tar.gz
+gunzip ko_list.gz
+```
+You will also need to edit the config file
+
+```bash
+pwd 
+```
+For me its /drives/Laurie/KOFAM
+```bash
+cd ./kofam_scan-1.3.0/
+nano config-template.yml
+```
+on line 4, change it to
+```bash
+profile: /drives/Laurie/KOFAM/profiles
+```
+on line 7, change it to 
+```bash
+ko_list: /drives/4tb/Laurie/KOFAM/ko_list
+```
+on line 18, change it to
+```bash
+cpu: 32
+```
+ctrl-O and save as ‘config.yml’
+
+You will also need to add the exec_annotation file to your path
+
+```bash
+nano ~/.bash_profile
+export PATH="/path/to/kofam_scan-1.3.0:$PATH"
+```
+ctrl-O to save
 
 ## make BLAST databases
 
@@ -66,7 +114,11 @@ Here are some genomes blah blah
 
 ## How to download genomes
 
--- Reccommended way is to use the download datasets package. This is so that gene ID is the same in protein fasta, nucleotide fasta, and gff. Otherwise users will have to check the gene ID .
+The SOCfinder reccommended way to download the genome files you need is to use the [NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/download-and-install/?utm_source=ncbi_insights&utm_medium=referral&utm_campaign=datasets-command-line-20221012) command line tool. This is so that gene ID is the same in protein fasta, nucleotide fasta, and gff. Otherwise users will have to check the gene ID .
+
+```python
+datasets download genome accession GCA_003798305.1 --include gff3,genome,protein
+```
 
 ## Manuscript
 
