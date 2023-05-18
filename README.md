@@ -37,10 +37,29 @@ https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
 ```
 
 ## Options
+
+**SOC_mine.py**
+
 - `-g GENOMEinput`
   - Path to GENOME protein (.faa)
-- Option 2: Description of option 2
+- `-f FASTAinput`
+  - Path to GENOME nucleotide (.fna)
+- `-gff GENOMEinput`
+  - Path to GENOME gff file (.gff)
+- `-O outputfolder`
+  - Name of output folder
+- `-p | -n GramPositive | GramNegative`
+  - Gram stain (positive | negative)
 
+**SOC_parse.py
+- `-i inputfolder`
+  - Path to input folder from SOC_mine
+- `-ac accession`
+  - Accession number
+- `-k ko`
+  - Path to list of social KO terms
+- `-a ANTISMASHtypes`
+  - Path to list of antismash types
 
 ## Download genomes
 
