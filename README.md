@@ -6,6 +6,11 @@ SOCfinder is a tool for finding cooperative genes in bacterial genomes.
 
 There are several prerequisities:
 --list them --
+- python version3.10
+
+## Instructions
+- adding KOFAM to path
+- altering KOFAM config file
 
 ## Download SOCfinder scripts
 ```bash
@@ -27,13 +32,13 @@ https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
 
 -- Part 2: Extract the Social Genes
 ```python
-./SOC_mine.py -g test/B_aphidicola.faa -f test/B_aphidicola.fna -gff test/B_aphidicola.gff -O B_aphidicola2 -n
+./SOC_mine.py -g test/B_aphidicola.faa -f test/B_aphidicola.fna -gff test/B_aphidicola.gff -O B_aphidicola -n
 ./SOC_mine.py -g test/P_salmonis.faa -f test/P_salmonis.fna -gff test/P_salmonis.gff -O P_salmonis -n 
 ```
 
 ## Download genomes
 
--- use the download datasets
+-- Reccommended way is to use the download datasets package. This is so that gene ID is the same in protein fasta, nucleotide fasta, and gff. Otherwise users will have to check the gene ID .
 
 ## Manuscript
 
