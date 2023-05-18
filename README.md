@@ -7,8 +7,7 @@ SOCfinder is a tool for finding cooperative genes in bacterial genomes.
 There are several prerequisities:
 --list them --
 - python version3.10
-
-## Instructions
+- lots of other tools and packages
 - adding KOFAM to path
 - altering KOFAM config file
 
@@ -18,11 +17,15 @@ https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
 ```
 
 ## make BLAST databases
+
+You will need to build the databases that the BLAST search uses
 ```bash
 ./SOC_MakeBlastDB.py
 ```
 
 ## Tutorial
+
+Here are some genomes blah blah
 
 -- Part 1: Mine the Genome
 ```python
@@ -36,7 +39,7 @@ https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
 ./SOC_mine.py -g test/P_salmonis.faa -f test/P_salmonis.fna -gff test/P_salmonis.gff -O P_salmonis -n 
 ```
 
-## Options
+## User Options
 
 **SOC_mine.py**
 
@@ -61,7 +64,7 @@ https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
 - `-a ANTISMASHtypes`
   - Path to list of antismash types
 
-## Download genomes
+## How to download genomes
 
 -- Reccommended way is to use the download datasets package. This is so that gene ID is the same in protein fasta, nucleotide fasta, and gff. Otherwise users will have to check the gene ID .
 
