@@ -8,6 +8,7 @@ dependencies:
   - blast=2.6.0=boost1.64_2
   - diamond=0.9.14=hfd59bb5_4
   - fastani=1.33=h26a250f_3
+  - fasttree=2.1.10=hb4d813b_5
   - glimmerhmm=3.0.4=h470a237_2
   - hmmer=3.3.2=h9722bc1_2
   - hmmer2=2.3.2=ha5712d3_7
