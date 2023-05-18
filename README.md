@@ -37,7 +37,8 @@ https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
 ```
 
 ## Options
-- Option 1: Description of option 1
+- `-g GENOMEinput`
+  - Path to GENOME protein (.faa)
 - Option 2: Description of option 2
 
 
