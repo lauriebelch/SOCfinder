@@ -97,13 +97,15 @@ SOCfinder comes with two genomes that you can test the code with. For each genom
 The folder `test` contains the files for a strain of *Buchnera aphidicola*.
 The folder `test2` contains the files for a strain of *Piscirickettsia salmonis*.
 
-**Part 1: Mine the Genome.** In this section, the three modules of SOCfinder are run. The output files are stored in a folder
+**Part 1: Mine the Genome.**
+In this section, the three modules of SOCfinder are run. The output files are stored in a folder
 ```python
 ./SOC_mine.py -g test/B_aphidicola.faa -f test/B_aphidicola.fna -gff test/B_aphidicola.gff -O B_aphidicola -n
 ./SOC_mine.py -g test2/P_salmonis.faa -f test2/P_salmonis.fna -gff test2/P_salmonis.gff -O P_salmonis -n 
 ```
 
-**Part 2: Extract the Social Genes.** In this section, the outputs of each modules are converted into lists of social genes. The final list is stored as `SOCKS.csv`. Outputs for each module are stored as `K_SOCK.csv` for the functional annotation social genes, `B_SOCK.csv` for the extracellular genes, and `A_SOCK_filtered.csv` for the antismash social genes.
+**Part 2: Extract the Social Genes.**
+In this section, the outputs of each modules are converted into lists of social genes. The final list is stored as `SOCKS.csv`. Outputs for each module are stored as `K_SOCK.csv` for the functional annotation social genes, `B_SOCK.csv` for the extracellular genes, and `A_SOCK_filtered.csv` for the antismash social genes.
 ```python
 ./SOC_parse.py -ac CP013821.1 -i P_salmonis/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
 ./SOC_parse.py -ac CP002703.1 -i B_aphidicola/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
