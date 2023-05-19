@@ -3,15 +3,15 @@
 
 SOCfinder is a bioinformatics tool for finding cooperative genes in bacterial genomes. SOCfinder combines information from several methods, considering if a gene is likely to: (1) code for an extracellular protein; (2) have a cooperative functional annotation; or (3) be part of the biosynthesis of a cooperative secondary metabolite. SOCfinder uses information on the quality and significance of database matches and annotations.
 
-## Table of ceontents
+## Table of contents
 - [Installation](#Installation)
 - [Options](#Options)
 
 ## Installation
 
-The easiest way to install is to clone this github page, or download the zip file https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
+The easiest way to install is to clone this github page using the code below. Alternatively, you can download the zip file https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
 
-You can then use the environment.yml file to create a conda environment with most of the required packages and tools
+The tools comes with the file `environment.yml`, which you can use to create a conda environment with most of the required packages and tools. For an introduction to conda and its environments, see [here](https://www.machinelearningplus.com/deployment/conda-create-environment-and-everything-you-need-to-know-to-manage-conda-virtual-environment/)
 
 ## Download SOCfinder scripts
 
@@ -21,9 +21,11 @@ cd SOCfinder
 conda env create -f environment.yml
 ```
 
+You will then need to download some files for KOFAMscan and ANTISMASH.
+
 ## Download KOFAMscan files
 
-You will need to download some required files for KOFAMscan. It is reccommended that you do this within the SOCfinder folder
+It is reccommended that you do this within the SOCfinder folder
 
 ```bash
 mkdir KOFAM
@@ -39,23 +41,16 @@ gunzip ko_list.gz
 You will also need to edit the config file
 
 ```bash
-pwd 
-```
-For me its /drives/Laurie/KOFAM
-```bash
 cd ./kofam_scan-1.3.0/
 nano config-template.yml
-```
-on line 4, change it to
-```bash
-profile: /drives/Laurie/KOFAM/profiles
-```
-on line 7, change it to 
-```bash
-ko_list: /drives/4tb/Laurie/KOFAM/ko_list
-```
-on line 18, change it to
-```bash
+
+### on line 4, change it to
+profile: /path/to/KOFAM/profiles
+
+### on line 7, change it to 
+ko_list: /path/to/KOFAM/ko_list
+
+### on line 18, change it to
 cpu: 32
 ```
 ctrl-O and save as ‘config.yml’
@@ -70,7 +65,7 @@ ctrl-O to save
 
 ## Download antismash files
 
-You will need to download some required files for ANTISMASH. It is reccommended that you do this within the SOCfinder folder
+It is reccommended that you do this within the SOCfinder folder
 
 ```bash
 mkdir ANTISMASH
@@ -86,32 +81,37 @@ nano ~/.bash_profile
 export PATH="/path/to/antismash-6.1.1/antismash:$PATH"
 export PATH="/path/to/antismash-6.1.1:$PATH"
 ```
-ctrl+o to save
+ctrl-O to save
 
 ## make BLAST databases
 
-You will need to build the databases that the BLAST search uses
+You will need to build the databases that the BLAST search uses. You can do this using the script provided
 ```bash
 ./SOC_MakeBlastDB.py
 ```
 
 ## Tutorial
 
-Here are some genomes blah blah
+SOCfinder comes with two genomes that you can test the code with. For each genome, you need a protein fasta, a nucleotide fasta, and a gff. This is because the tools that SOCfinder uses require different inputs.
 
--- Part 1: Mine the Genome
+The folder `test` contains the files for a strain of *Buchnera aphidicola*.
+The folder `test2` contains the files for a strain of *Piscirickettsia salmonis*.
+
+**Part 1: Mine the Genome.** In this section, the three modules of SOCfinder are run. The output files are stored in a folder
+```python
+./SOC_mine.py -g test/B_aphidicola.faa -f test/B_aphidicola.fna -gff test/B_aphidicola.gff -O B_aphidicola -n
+./SOC_mine.py -g test2/P_salmonis.faa -f test2/P_salmonis.fna -gff test2/P_salmonis.gff -O P_salmonis -n 
+```
+
+**Part 2: Extract the Social Genes.** In this section, the outputs of each modules are converted into lists of social genes. The final list is stored as `SOCKS.csv`. Outputs for each module are stored as `K_SOCK.csv` for the functional annotation social genes, `B_SOCK.csv` for the extracellular genes, and `A_SOCK_filtered.csv` for the antismash social genes.
 ```python
 ./SOC_parse.py -ac CP013821.1 -i P_salmonis/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
 ./SOC_parse.py -ac CP002703.1 -i B_aphidicola/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
 ```
 
--- Part 2: Extract the Social Genes
-```python
-./SOC_mine.py -g test/B_aphidicola.faa -f test/B_aphidicola.fna -gff test/B_aphidicola.gff -O B_aphidicola -n
-./SOC_mine.py -g test/P_salmonis.faa -f test/P_salmonis.fna -gff test/P_salmonis.gff -O P_salmonis -n 
-```
-
 ## Options
+
+Command-line options for SOCfinder
 
 **SOC_mine.py**
 
@@ -155,4 +155,7 @@ to discuss what you would like to change.
 
 ## License
 
-Free to use, but please cite the SOCfinder paper
+SOCfinder code is open-source and free to use and distribute, but please cite the SOCfinder paper.
+antiSMASH is an open source tool available under the GNU Affero General Public License version 3.0 or greater.
+KOFAMscan is released under the MIT License.
+
