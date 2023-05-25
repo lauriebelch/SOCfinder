@@ -87,6 +87,7 @@ ctrl-O to save
 
 You will need to build the databases that the BLAST search uses. You can do this using the script provided
 ```bash
+unzip ./blast_files/Archive.zip
 ./SOC_MakeBlastDB.py
 ```
 
