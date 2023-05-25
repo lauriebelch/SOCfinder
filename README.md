@@ -19,6 +19,7 @@ The tools comes with the file `environment.yml`, which you can use to create a c
 git clone https://github.com/lauriebelch/SOCfinder.git
 cd SOCfinder
 conda env create -f environment.yml
+# activate conda environment
 conda activate SOCfinder
 ```
 
@@ -51,7 +52,7 @@ profile: /path/to/KOFAM/profiles
 ### on line 7, change it to 
 ko_list: /path/to/KOFAM/ko_list
 
-### on line 18, change it to
+### you may also wish to change line 18 to
 cpu: 32
 ```
 ctrl-O and save as ‘config.yml’
@@ -86,11 +87,12 @@ ctrl-O to save
 
 ## make BLAST databases
 
-You will need to build the databases that the BLAST search uses. You can do this using the script provided
+You will need to build the databases that the BLAST search uses. You only need to do this once, and can use the script provided
 ```bash
 cd blast_files
 unzip Archive.zip
 cd ..
+chmod +x ./SOC_MakeBlastDB.py
 ./SOC_MakeBlastDB.py
 ```
 
