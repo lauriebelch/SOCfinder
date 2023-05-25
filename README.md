@@ -70,16 +70,16 @@ It is reccommended that you do this within the SOCfinder folder
 ```bash
 mkdir ANTISMASH
 cd ./ANTISMASH 
-wget https://dl.secondarymetabolites.org/releases/6.1.1/antismash-6.1.1.tar.gz
-tar -zxf antismash-6.1.1.tar.gz
-pip install ./antismash-6.1.1
-python antismash-6.1.1/antismash/download_databases.py
+wget https://dl.secondarymetabolites.org/releases/7.0.0/antismash-7.0.0.tar.gz
+tar -zxf antismash-7.0.0.tar.gz
+pip install ./antismash-7.0.0
+python antismash-7.0.0/antismash/download_databases.py
 ```
 You will need to add antismash to your path
 ```bash
 nano ~/.bash_profile
-export PATH="/path/to/antismash-6.1.1/antismash:$PATH"
-export PATH="/path/to/antismash-6.1.1:$PATH"
+export PATH="/path/to/antismash-7.0.0/antismash:$PATH"
+export PATH="/path/to/antismash-7.0.0:$PATH"
 ```
 ctrl-O to save
 
