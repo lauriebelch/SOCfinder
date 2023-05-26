@@ -22,7 +22,7 @@ conda env create -f environment.yml
 # activate conda environment
 conda activate SOCfinder
 ```
-If you are on linux, you might have to use the alternative `.yml` file
+If you are on linux rather than mac, you might have to use the alternative `.yml` file
 ```bash
 conda env create -f environment_nobuild.yml
 ```
