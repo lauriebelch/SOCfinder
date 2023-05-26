@@ -117,6 +117,9 @@ In this section, the outputs of each modules are converted into lists of social 
 ./SOC_parse.py -ac CP002703.1 -i B_aphidicola/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
 ```
 
+*B. aphidicola* has nine social genes, and *P. salmonis* has 64.
+
+
 ## Options
 
 Command-line options for SOCfinder
