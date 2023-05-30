@@ -56,7 +56,8 @@ profile: /path/to/KOFAM/profiles/prokaryote.hal
 ### on line 7, change it to 
 ko_list: /path/to/KOFAM/ko_list
 
-### you may also wish to change line 18 to
+### You may also wish to change line 18
+### If you are on a server, changing this to 64 or 128 will significantly increase the speed 
 cpu: 32
 ```
 ctrl-O and save as ‘config.yml’
