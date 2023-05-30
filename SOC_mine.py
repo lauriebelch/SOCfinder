@@ -83,7 +83,7 @@ tempdir = os.path.join(directory_name, "tmp")
 bash_script = """#!/bin/bash
 ### if you need to add exec_annotation to path, do it here ##
 mkdir {blast_outputs_dir}
-exec_annotation {input} -o {outputK} -f detail-tsv --threshold-scale 0.75 --tmp-dir={DIR} &
+exec_annotation {input} -o {outputK} -f detail-tsv --threshold-scale 0.75 --tmp-dir={DIR} --cpu=32 &
 ### blast to gram 
 blastp -db {db}/{gram} -query {input} -evalue 10e-8 -outfmt \
 "6 sseqid qacc qlen evalue bitscore sstart send slen" -out {blast_outputs_dir}/file_PSORT.txt -num_threads 16 &
