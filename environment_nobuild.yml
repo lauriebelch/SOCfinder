@@ -5,7 +5,7 @@ channels:
   - defaults
 dependencies:
   - biopython=1.81
-  - blast=2.6.0
+  - blast=2.14.0
   - bzip2=1.0.8
   - ca-certificates=2023.5.7
   - diamond=0.9.14
