@@ -51,7 +51,7 @@ cd ./kofam_scan-1.3.0/
 nano config-template.yml
 
 ### on line 4, change it to
-profile: /path/to/KOFAM/profiles
+profile: /path/to/KOFAM/profiles/prokaryote.hal
 
 ### on line 7, change it to 
 ko_list: /path/to/KOFAM/ko_list
