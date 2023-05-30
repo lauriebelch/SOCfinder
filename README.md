@@ -64,7 +64,11 @@ ctrl-O and save as ‘config.yml’
 You will also need to add the exec_annotation file to your path
 
 ```bash
+## if on mac, use bash_profile
 nano ~/.bash_profile
+export PATH="/path/to/kofam_scan-1.3.0:$PATH"
+## if on linux, use profile
+nano ~/.profile
 export PATH="/path/to/kofam_scan-1.3.0:$PATH"
 ```
 ctrl-O to save
@@ -83,7 +87,12 @@ python antismash-7.0.0/antismash/download_databases.py
 ```
 You will need to add antismash to your path
 ```bash
+## if on mac, use bash_profile
 nano ~/.bash_profile
+export PATH="/path/to/antismash-7.0.0/antismash:$PATH"
+export PATH="/path/to/antismash-7.0.0:$PATH"
+## if on linux, use profile
+nano ~/.profile
 export PATH="/path/to/antismash-7.0.0/antismash:$PATH"
 export PATH="/path/to/antismash-7.0.0:$PATH"
 ```
