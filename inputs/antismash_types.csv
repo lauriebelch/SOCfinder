@@ -44,7 +44,7 @@ NAPAA,Non-alpha poly-amino acids like e-Polylysin,
 NRPS,Non-ribosomal peptide synthetase,
 NRPS-like,NRPS-like fragment,
 NRP-metallophore,Non-ribosomal peptide metallophores,1
-NRPS-independent-siderophore,IucA/IucC-like siderophores (siderophore prior to 7.0),1
+NRPS-independent-siderophore,IucA/IucC-like siderophores (siderophore√äprior to 7.0),1
 nucleoside,Nucleoside,
 oligosaccharide,Oligosaccharide,
 opine-like-metallophore,Opine-like zincophores like staphylopine (doi:10.1128/mSystems.00554-20),1
@@ -81,3 +81,4 @@ transAT-PKS,Trans-AT PKS,
 transAT-PKS-like,"Trans-AT PKS fragment, with trans-AT domain not found",
 tropodithietic-acid,Tropodithietic acid,
 siderophore,Siderophore,1
+NI-siderophore,Siderophore,1
