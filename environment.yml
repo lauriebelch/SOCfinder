@@ -5,7 +5,7 @@ channels:
   - defaults
 dependencies:
   - biopython=1.81=py310h90acd4f_0
-  - blast=2.6.0=boost1.64_2
+  - blast=2.14.0=h23b05c9_0
   - diamond=0.9.14=hfd59bb5_4
   - fastani=1.33=h26a250f_3
   - fasttree=2.1.10=hb4d813b_5
