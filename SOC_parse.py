@@ -376,6 +376,20 @@ combined_data = pd.concat([data_a, data_b, data_k])
 unique_entries = combined_data.iloc[:, 0].drop_duplicates()
 unique_entries.to_csv(SOCKSS, index=False)
 
+## make summary file
+dataS = {
+    'secondary_metabolites': [len(data_a)],
+    'functional_annotation': [len(data_k)],
+    'extracellular': [len(data_b)],
+    'total': [len(unique_entries)]
+}
+# Create a DataFrame from the dictionary
+result = pd.DataFrame(dataS)
+# Define the file path and name for the output CSV file
+output_file = os.path.join(directory_name, "summary.csv")
+# Write the DataFrame to a CSV file with the specified column names
+result.to_csv(output_file, index=False)
+
 
 
 
