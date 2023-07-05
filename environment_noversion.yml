@@ -1,0 +1,34 @@
+name: SOCfinder
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - hmmer
+  - zstd
+  - pip
+  - fastani
+  - python-dateutil
+  - muscle
+  - diamond
+  - ncbi-datasets-cli
+  - glimmerhmm
+  - biopython
+  - ruby
+  - phipack
+  - python
+  - blast
+  - kofamscan
+  - perl
+  - vsearch
+  - zlib
+  - python_abi
+  - numpy
+  - parallel
+  - yaml
+  - hmmer2
+  - readline
+  - prodigal
+  - pandas
+  - python-tzdata
+prefix: /Users/user/.conda/envs/SOCfinder
