@@ -114,10 +114,10 @@ process.wait()
 
 
 # Remove the temporary script file
-#subprocess.run(['rm', script_filename])
+subprocess.run(['rm', script_filename])
 
 # remove the temp file
-#rdir = os.path.join(tempdir, "tabular/tabular.txt")
-#subprocess.run(['rm', rdir])
+rdir = os.path.join(tempdir, "tabular/tabular.txt")
+subprocess.run(['rm', rdir])
 
 
