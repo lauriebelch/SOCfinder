@@ -32,7 +32,7 @@ cd ./ANTISMASH
 mkdir antismash-7.0.0 # remove this line later
 cd ./antismash-7.0.0
 as_my_var=$(pwd)
-cd ../../
+cd ../
 #pip install ./antismash-7.0.0
 #python antismash-7.0.0/antismash/download_databases.py
 
