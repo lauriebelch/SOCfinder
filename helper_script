@@ -6,19 +6,17 @@ cd ./KOFAM
 ## record path to current directory
 cwd_my_var=$(pwd)
 
-#wget ftp://ftp.genome.jp/pub/db/kofam/ko_list.gz
-#wget ftp://ftp.genome.jp/pub/db/kofam/profiles.tar.gz
-#wget ftp://ftp.genome.jp/pub/tools/kofam_scan/kofam_scan-1.3.0.tar.gz
-#wget https://www.genome.jp/ftp/tools/kofam_scan/README.md
-#tar -xf profiles.tar.gz
-#tar -xf kofam_scan-1.3.0.tar.gz
-#gunzip ko_list.gz
+wget ftp://ftp.genome.jp/pub/db/kofam/ko_list.gz
+wget ftp://ftp.genome.jp/pub/db/kofam/profiles.tar.gz
+wget ftp://ftp.genome.jp/pub/tools/kofam_scan/kofam_scan-1.3.0.tar.gz
+wget https://www.genome.jp/ftp/tools/kofam_scan/README.md
+tar -xf profiles.tar.gz
+tar -xf kofam_scan-1.3.0.tar.gz
+gunzip ko_list.gz
 
 ### edit config file #####################################
-mkdir kofam_scan-1.3.0 # remove this line later
 cd ./kofam_scan-1.3.0/
 ks_my_var=$(pwd)
-cp ../../config-template.yml .  # remove this line later
 echo profile: ${cwd_my_var}/profiles/prokaryote.hal >> config-template.yml
 echo ko_list: ${cwd_my_var}/ko_list >> config-template.yml
 cp config-template.yml config.yml
@@ -27,14 +25,13 @@ cp config-template.yml config.yml
 cd ../../
 mkdir ANTISMASH
 cd ./ANTISMASH
-#wget https://dl.secondarymetabolites.org/releases/7.0.0/antismash-7.0.0.tar.gz
-#tar -zxf antismash-7.0.0.tar.gz
-mkdir antismash-7.0.0 # remove this line later
+wget https://dl.secondarymetabolites.org/releases/7.0.0/antismash-7.0.0.tar.gz
+tar -zxf antismash-7.0.0.tar.gz
 cd ./antismash-7.0.0
 as_my_var=$(pwd)
 cd ../
-#pip install ./antismash-7.0.0
-#python antismash-7.0.0/antismash/download_databases.py
+pip install ./antismash-7.0.0
+python antismash-7.0.0/antismash/download_databases.py
 
 ### add things to path #####################################
 echo "#################################################"
