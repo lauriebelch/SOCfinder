@@ -5,7 +5,7 @@ SOCfinder is a bioinformatics tool for finding cooperative genes in bacterial ge
 
 ## Table of contents
 - [Installation](#Installation)
-- [Options](#Options)
+- [Input Options](#Input)
 
 ## Installation
 
@@ -71,7 +71,7 @@ The final list of cooperative genes is stored as `SOCKS.csv`. Outputs for each m
 
 *B. aphidicola* has nine social genes, and *P. salmonis* has 64.
 
-## Options
+## Input Options
 
 Command-line options for SOCfinder
 
