@@ -25,7 +25,7 @@ conda env create -f environment.yml
 conda activate SOCfinder
 ```
 
-If you have problems with the `environment.yml` file, try using `environment_noversion.yml`
+If you have problems with the `environment.yml` file, try using `environment_noversion.yml` instead.
 
 You will then need to download some files for KOFAMscan and ANTISMASH. The easiest way to do this is to use the helper script.
 
@@ -35,9 +35,9 @@ source helper_script
 ```
 When this script has finished running, it will tell you how to add the required programs to your path. For a simple explanation of the path, see [here](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976).
 
-## make BLAST databases
+## Make BLAST databases
 
-You will need to build the databases that the BLAST search uses. You only need to do this once, and can use the script provided
+You will need to build the databases that the BLAST search uses. You only need to do this once, and can use the script provided.
 ```bash
 cd blast_files
 unzip Archive.zip
@@ -61,14 +61,15 @@ In this section, the three modules of SOCfinder are run. The output files are st
 ```
 
 **Part 2: Extract the Social Genes.**
-In this section, the outputs of each modules are converted into lists of social genes. The final list is stored as `SOCKS.csv`. Outputs for each module are stored as `K_SOCK.csv` for the functional annotation social genes, `B_SOCK.csv` for the extracellular genes, and `A_SOCK_filtered.csv` for the antismash social genes. There is also a summary gile `summary.csv` that gives you the counts of social genes for each module.
+
+In this section, the outputs of each modules are converted into lists of social genes.
 ```python
 ./SOC_parse.py -i B_aphidicola/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
 ./SOC_parse.py -i P_salmonis/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
 ```
+The final list of cooperative genes is stored as `SOCKS.csv`. Outputs for each module are stored as `K_SOCK.csv` for the functional annotation social genes, `B_SOCK.csv` for the extracellular genes, and `A_SOCK_filtered.csv` for the antismash social genes. There is also a summary file `summary.csv` that gives you the counts of cooperative genes for each module.
 
 *B. aphidicola* has nine social genes, and *P. salmonis* has 64.
-
 
 ## Options
 
@@ -97,7 +98,7 @@ Command-line options for SOCfinder
 
 ## How to download genomes
 
-The SOCfinder reccommended way to download the genome files you need is to use the [NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/download-and-install/?utm_source=ncbi_insights&utm_medium=referral&utm_campaign=datasets-command-line-20221012) command line tool. This is so that gene ID is the same in protein fasta, nucleotide fasta, and gff. Otherwise users will have to check the gene ID .
+The SOCfinder reccommended way to download the genome files you need is to use the [NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/download-and-install/?utm_source=ncbi_insights&utm_medium=referral&utm_campaign=datasets-command-line-20221012) command line tool. This is so that gene ID is the same in the protein fasta, nucleotide fasta, and gff.
 
 ```python
 datasets download genome accession GCA_003798305.1 --include gff3,genome,protein
@@ -109,6 +110,8 @@ Apple recently made the switch from Intel processors to their own Apple Silicon 
 ```bash
 conda config --add subdirs osx-64
 ```
+
+Further discussion of this issue can be found [here](https://towardsdatascience.com/how-to-manage-conda-environments-on-an-apple-silicon-m1-mac-1e29cb3bad12).
 
 ## Manuscript
 
