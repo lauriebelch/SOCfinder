@@ -9,11 +9,13 @@ SOCfinder is a bioinformatics tool for finding cooperative genes in bacterial ge
 
 ## Installation
 
-The easiest way to install is to clone this github page using the code below. Alternatively, you can download the zip file https://github.com/lauriebelch/SOCfinder/archive/refs/heads/main.zip
+You will need miniconda, which can be installed by following the instructions [here](https://docs.conda.io/en/latest/miniconda.html)
 
-The tools comes with the file `environment.yml`, which you can use to create a conda environment with most of the required packages and tools. For an introduction to conda and its environments, see [here](https://www.machinelearningplus.com/deployment/conda-create-environment-and-everything-you-need-to-know-to-manage-conda-virtual-environment/)
+For an introduction to conda, see [here](https://www.machinelearningplus.com/deployment/conda-create-environment-and-everything-you-need-to-know-to-manage-conda-virtual-environment/)
 
-## Download SOCfinder scripts
+If you are on a mac that has an M1 or M2 chip, you might have to adjust your conda architecture. More details can be found [here](#Mac)
+
+## Download SOCfinder
 
 ```bash
 git clone https://github.com/lauriebelch/SOCfinder.git
@@ -23,78 +25,15 @@ conda env create -f environment.yml
 conda activate SOCfinder
 ```
 
+If you have problems with the `environment.yml` file, try using `environment_noversion.yml`
 
-You will then need to download some files for KOFAMscan and ANTISMASH.
-
-## Download KOFAMscan files
-
-It is reccommended that you do this within the SOCfinder folder
+You will then need to download some files for KOFAMscan and ANTISMASH. The easiest way to do this is to use the helper script.
 
 ```bash
-mkdir KOFAM
-cd ./KOFAM
-wget ftp://ftp.genome.jp/pub/db/kofam/ko_list.gz
-wget ftp://ftp.genome.jp/pub/db/kofam/profiles.tar.gz
-wget ftp://ftp.genome.jp/pub/tools/kofam_scan/kofam_scan-1.3.0.tar.gz
-wget https://www.genome.jp/ftp/tools/kofam_scan/README.md
-tar -xf profiles.tar.gz
-tar -xf kofam_scan-1.3.0.tar.gz
-gunzip ko_list.gz
+chmod +x ./helper_script
+source helper_script
 ```
-You will also need to edit the config file
-
-```bash
-cd ./kofam_scan-1.3.0/
-nano config-template.yml
-
-### on line 4, change it to
-profile: /path/to/KOFAM/profiles/prokaryote.hal
-
-### on line 7, change it to 
-ko_list: /path/to/KOFAM/ko_list
-
-### You may also wish to change line 18
-### If you are on a server, changing this to 64 or 128 will significantly increase the speed 
-cpu: 32
-```
-ctrl-O and save as ‘config.yml’
-
-You will also need to add the exec_annotation file to your path
-
-```bash
-## if on mac, use bash_profile
-nano ~/.bash_profile
-export PATH="/path/to/kofam_scan-1.3.0:$PATH"
-## if on linux, use profile
-nano ~/.profile
-export PATH="/path/to/kofam_scan-1.3.0:$PATH"
-```
-ctrl-O to save
-
-## Download antismash files
-
-It is reccommended that you do this within the SOCfinder folder
-
-```bash
-mkdir ANTISMASH
-cd ./ANTISMASH 
-wget https://dl.secondarymetabolites.org/releases/7.0.0/antismash-7.0.0.tar.gz
-tar -zxf antismash-7.0.0.tar.gz
-pip install ./antismash-7.0.0
-python antismash-7.0.0/antismash/download_databases.py
-```
-You will need to add antismash to your path
-```bash
-## if on mac, use bash_profile
-nano ~/.bash_profile
-export PATH="/path/to/antismash-7.0.0/antismash:$PATH"
-export PATH="/path/to/antismash-7.0.0:$PATH"
-## if on linux, use profile
-nano ~/.profile
-export PATH="/path/to/antismash-7.0.0/antismash:$PATH"
-export PATH="/path/to/antismash-7.0.0:$PATH"
-```
-ctrl-O to save
+When this script has finished running, it will tell you how to add the required programs to your path. For a simple explanation of the path, see [here](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976).
 
 ## make BLAST databases
 
@@ -122,10 +61,10 @@ In this section, the three modules of SOCfinder are run. The output files are st
 ```
 
 **Part 2: Extract the Social Genes.**
-In this section, the outputs of each modules are converted into lists of social genes. The final list is stored as `SOCKS.csv`. Outputs for each module are stored as `K_SOCK.csv` for the functional annotation social genes, `B_SOCK.csv` for the extracellular genes, and `A_SOCK_filtered.csv` for the antismash social genes.
+In this section, the outputs of each modules are converted into lists of social genes. The final list is stored as `SOCKS.csv`. Outputs for each module are stored as `K_SOCK.csv` for the functional annotation social genes, `B_SOCK.csv` for the extracellular genes, and `A_SOCK_filtered.csv` for the antismash social genes. There is also a summary gile `summary.csv` that gives you the counts of social genes for each module.
 ```python
-./SOC_parse.py -ac CP013821.1 -i P_salmonis/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
-./SOC_parse.py -ac CP002703.1 -i B_aphidicola/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
+./SOC_parse.py -i B_aphidicola/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
+./SOC_parse.py -i P_salmonis/ -k inputs/SOCIAL_KO.csv -a inputs/antismash_types.csv
 ```
 
 *B. aphidicola* has nine social genes, and *P. salmonis* has 64.
@@ -151,8 +90,6 @@ Command-line options for SOCfinder
 **SOC_parse.py**
 - `-i inputfolder`
   - Path to input folder from SOC_mine
-- `-ac accession`
-  - Accession number
 - `-k ko`
   - Path to list of social KO terms
 - `-a ANTISMASHtypes`
@@ -166,9 +103,16 @@ The SOCfinder reccommended way to download the genome files you need is to use t
 datasets download genome accession GCA_003798305.1 --include gff3,genome,protein
 ```
 
+## Mac
+Apple recently made the switch from Intel processors to their own Apple Silicon processors. This can cause package compatibility issues if your computer has one of the new M1 or M2 chips. Currently, the best solution is to create conda environments that still use the old architecture. You can do this by running the following command before creating the SOCfinder conda environment.
+
+```bash
+conda config --add subdirs osx-64
+```
+
 ## Manuscript
 
--- link to preprint
+The manuscript has been recently submitted to **Microbial Genomics**
 
 ## Contributing
 
