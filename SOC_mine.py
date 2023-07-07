@@ -95,6 +95,12 @@ blastp -db {db}/blastdbCExtra -query {input} -evalue 10e-8 -outfmt \
 blastp -db {db}/blastdbCNonExtra -query {input} -evalue 10e-8 -outfmt \
 "6 sseqid qacc qlen evalue bitscore sstart send slen" -out {blast_outputs_dir}/file_PSORT_NE.txt -num_threads 16 &
 antismash {fna} --genefinding-gff3 {gff} --output-dir {adir}
+### save the accession number
+file={fna}
+first_line=$(head -n 1 "$file")
+acc=$(echo "$first_line" | cut -d' ' -f1)
+acc1=$(echo "$acc" | cut -c2- )
+echo $acc1 > {adir}/accession.txt
 """
 
 # Format the bash script with the input and output filenames
