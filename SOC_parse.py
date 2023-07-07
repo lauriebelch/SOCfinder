@@ -33,7 +33,7 @@ parser = argparse.ArgumentParser(description='SOCfinder parser')
 # Add command-line arguments with flags and help messages
 parser._optionals.title = 'Required arguments'
 parser.add_argument('-i', '--inputfolder', type=str, metavar='.', required=True, help='Name of input folder')
-parser.add_argument('-ac', '--accession', type=str, metavar='.', required=True, help='Accession number of the genome')
+#parser.add_argument('-ac', '--accession', type=str, metavar='.', required=True, help='Accession number of the genome')
 parser.add_argument('-k', '--KO', type=str, required=True, metavar='.', help='Path to Social KO file')
 parser.add_argument('-a', '--ANTISMASHtypes', type=str, required=True, metavar='.', help='Path to list of ANTISMASH types')
 
@@ -43,11 +43,16 @@ args = parser.parse_args()
 # Access the values of the command-line arguments
 inputfolder = args.inputfolder
 antismashtypes = args.ANTISMASHtypes
-accession = args.accession
+#accession = args.accession
 kpath = args.KO
 
 # make required paths
 directory_name = inputfolder
+### load accession file
+acc_path = os.path.join(directory_name, "anti_smash", "accession.txt")
+with open(acc_path, "r") as file:
+    accession = file.read().rstrip("\n")
+# other paths
 inputpath = os.path.join(directory_name, "kofam.txt")
 outputpath = os.path.join(directory_name, "K_SOCK.csv")
 blastinputfolder = os.path.join(directory_name, "blast_outputs")
