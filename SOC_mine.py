@@ -126,5 +126,6 @@ subprocess.run(['rm', script_filename])
 # remove the temp file
 rdir = os.path.join(tempdir, "tabular/tabular.txt")
 subprocess.run(['rm', rdir])
+subprocess.run(['rm', '-rf', tempdir])
 
 
