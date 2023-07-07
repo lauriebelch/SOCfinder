@@ -5,7 +5,7 @@ SOCfinder is a bioinformatics tool for finding cooperative genes in bacterial ge
 
 ## Table of contents
 - [Installation](#Installation)
-- [Input Options](#Input)
+- [Input Options](#Input Options)
 
 ## Installation
 
