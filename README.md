@@ -118,7 +118,7 @@ Further discussion of this issue can be found [here](https://towardsdatascience.
 
 ## Manuscript
 
-The manuscript has been recently submitted to **Microbial Genomics**
+The manuscript has been recently submitted to *Microbial Genomics*
 
 ## Contributing
 
