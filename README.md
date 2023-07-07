@@ -14,19 +14,19 @@ You will need miniconda, which can be installed by following the instructions [h
 
 For an introduction to conda, see [here](https://www.machinelearningplus.com/deployment/conda-create-environment-and-everything-you-need-to-know-to-manage-conda-virtual-environment/).
 
-If you are on a mac that has an M1 or M2 chip, you might have to adjust your conda architecture. More details can be found [here](#Mac).
+If you are on a mac that has an M1 or M2 chip, you might have to adjust your conda architecture. Instructions can be found [here](#Mac).
 
 ## Download SOCfinder
+
+You can download SOCfinder from github using the code below.
 
 ```bash
 git clone https://github.com/lauriebelch/SOCfinder.git
 cd SOCfinder
-conda env create -f environment.yml
+conda env create -f environment_noversion.yml
 # activate conda environment
 conda activate SOCfinder
 ```
-
-If you have problems with the `environment.yml` file, try using `environment_noversion.yml` instead.
 
 You will then need to download some files for KOFAMscan and ANTISMASH. The easiest way to do this is to use the helper script.
 
@@ -34,11 +34,13 @@ You will then need to download some files for KOFAMscan and ANTISMASH. The easie
 chmod +x ./helper_script
 source helper_script
 ```
+
 When this script has finished running, it will tell you how to add the required programs to your path. For a simple explanation of the path, see [here](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976).
 
 ## Make BLAST databases
 
 You will need to build the databases that the BLAST search uses. You only need to do this once, and can use the script provided.
+
 ```bash
 cd blast_files
 unzip Archive.zip
