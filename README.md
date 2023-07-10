@@ -10,7 +10,7 @@ SOCfinder is a bioinformatics tool for finding cooperative genes in bacterial ge
 
 ## Installation
 
-You will need miniconda, which can be installed by following the instructions [here](https://docs.conda.io/en/latest/miniconda.html).
+You will need miniconda, which can be installed by following the instructions [here](https://docs.conda.io/en/latest/miniconda.html). You can check that conda has installed correctly by running `conda list` (you may need to restart your terminal first).
 
 For an introduction to conda, see [here](https://www.machinelearningplus.com/deployment/conda-create-environment-and-everything-you-need-to-know-to-manage-conda-virtual-environment/).
 
