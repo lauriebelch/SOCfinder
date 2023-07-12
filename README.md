@@ -104,7 +104,7 @@ Command-line options for SOCfinder
 The SOCfinder reccommended way to download the genome files you need is to use the [NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/download-and-install/?utm_source=ncbi_insights&utm_medium=referral&utm_campaign=datasets-command-line-20221012) command line tool. This is so that gene ID is the same in the protein fasta, nucleotide fasta, and gff.
 
 ```python
-datasets download genome accession GCA_003798305.1 --include gff3,genome,protein
+datasets download genome accession GCA_003798305.1 --include gff3,genome,protein --filename GCA_003798305.1.zip
 ```
 
 ## Mac
