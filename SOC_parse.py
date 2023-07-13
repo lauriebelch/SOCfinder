@@ -244,11 +244,11 @@ files = [f for f in os.listdir() if f.endswith('.gbk') and 'region' in f]
 PROD = [None] * len(files)
 
 for j in range(len(files)):
-    two_num = str(j + 1).zfill(2)
-    filefile = ACC + ".region0" + two_num + ".gbk"
+    #two_num = str(j + 1).zfill(2)
+    #filefile = ACC + ".region0" + two_num + ".gbk"
     
     # read a genbank file
-    with open(filefile, "r") as f:
+    with open(files[j], "r") as f:
         data = f.read().splitlines()
     data = [line.strip() for line in data]
     data = [line for line in data if line != ""]
@@ -265,11 +265,11 @@ for j in range(len(files)):
         PROD[j] = prod
 # extract other information
 for j in range(len(files)):
-    two_num = str(j + 1).zfill(2)
-    filefile = ACC + ".region0" + two_num + ".gbk"
+    #two_num = str(j + 1).zfill(2)
+    #filefile = ACC + ".region0" + two_num + ".gbk"
     
     # read a genbank file
-    with open(filefile, "r") as f:
+    with open(files[j], "r") as f:
         data = f.read().splitlines()
     data = [line.strip() for line in data]
     data = [line for line in data if line != ""]
