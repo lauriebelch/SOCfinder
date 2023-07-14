@@ -303,7 +303,7 @@ for j in range(len(files)):
     for i in range(len(start)):
         VEC = my_dict[i]
         aa = [i for i, s in enumerate(VEC) if 'gene_kind' in s]
-        bb = [i for i, s in enumerate(VEC) if 'product' in s]
+        bb = [i for i, s in enumerate(VEC) if 'product=' in s]
         cc = [i for i, s in enumerate(VEC) if 'locus_tag' in s]
         dd = [i for i, s in enumerate(VEC) if 'protein_id' in s]
         vec = VEC
@@ -352,7 +352,7 @@ df.to_csv(FILEOUT, index=False)
 data = pd.read_csv(FILEOUT)
     
 # Filter out genes of unknown type
-data = data[data['gene_kind'].str.contains('gene_kind')]
+data = data[data['gene_kind'].str.contains('gene_kind', na=False)]
         
 # Filter out non-social secondary metabolite types
 social_types = antismash_types.loc[antismash_types['Social'] == 1, 'Label'].tolist()
