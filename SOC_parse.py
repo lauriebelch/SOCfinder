@@ -49,9 +49,9 @@ kpath = args.KO
 # make required paths
 directory_name = inputfolder
 ### load accession file
-acc_path = os.path.join(directory_name, "anti_smash", "accession.txt")
-with open(acc_path, "r") as file:
-    accession = file.read().rstrip("\n")
+#acc_path = os.path.join(directory_name, "anti_smash", "accession.txt")
+#with open(acc_path, "r") as file:
+    #accession = file.read().rstrip("\n")
 # other paths
 inputpath = os.path.join(directory_name, "kofam.txt")
 outputpath = os.path.join(directory_name, "K_SOCK.csv")
@@ -230,7 +230,7 @@ types_dir = antismashtypes
 antismash_types = pd.read_csv(types_dir,encoding='latin-1')
 
 FILEOUT = antismashoutputpath
-ACC = accession
+#ACC = accession
 base_dir = antismashdirectory
 
 # move to region gbk directory
