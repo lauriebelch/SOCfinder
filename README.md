@@ -26,6 +26,7 @@ cd SOCfinder
 conda env create -f environment_noversion.yml
 # activate conda environment
 conda activate SOCfinder
+pip install gffutils
 ```
 
 You will then need to download some files for KOFAMscan and ANTISMASH. The easiest way to do this is to use the helper script.
