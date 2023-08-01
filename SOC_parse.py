@@ -33,7 +33,6 @@ parser = argparse.ArgumentParser(description='SOCfinder parser')
 # Add command-line arguments with flags and help messages
 parser._optionals.title = 'Required arguments'
 parser.add_argument('-i', '--inputfolder', type=str, metavar='.', required=True, help='Name of input folder')
-#parser.add_argument('-ac', '--accession', type=str, metavar='.', required=True, help='Accession number of the genome')
 parser.add_argument('-k', '--KO', type=str, required=True, metavar='.', help='Path to Social KO file')
 parser.add_argument('-a', '--ANTISMASHtypes', type=str, required=True, metavar='.', help='Path to list of ANTISMASH types')
 
@@ -43,15 +42,10 @@ args = parser.parse_args()
 # Access the values of the command-line arguments
 inputfolder = args.inputfolder
 antismashtypes = args.ANTISMASHtypes
-#accession = args.accession
 kpath = args.KO
 
 # make required paths
 directory_name = inputfolder
-### load accession file
-#acc_path = os.path.join(directory_name, "anti_smash", "accession.txt")
-#with open(acc_path, "r") as file:
-    #accession = file.read().rstrip("\n")
 # other paths
 inputpath = os.path.join(directory_name, "kofam.txt")
 outputpath = os.path.join(directory_name, "K_SOCK.csv")
@@ -83,7 +77,6 @@ data = data.loc[data["#"] == "*", :]
 
 # count social genes in kofamscan output
 soc = data.loc[data["KO"].isin(sock["term"]), :]
-#print(len(soc["gene name"].unique()))
 
 # remove duplicates
 socks = soc.iloc[:, 1].unique()
@@ -117,11 +110,8 @@ if len(files2) > 0:
     blaste_ne_output_filename = files2[0]
 else:
     print("No _PSORT_NE.txt file found")
-
-
 # name of output file
 outfile = blastoutputpath
-
 
 # load blast output for PSORTB COMPUTATIONAL EXTRACELLULAR
 data = pd.read_table(blaste_output_filename, header=None, delim_whitespace=True)
@@ -153,9 +143,6 @@ removies = data_ne.query_acc[data_ne.evalue==0].unique()
 data = data[~data['query_acc'].isin(removies)]
 data_e = data_e[~data_e['query_acc'].isin(removies)]
 
-### removes is an array, removies2 is a list. this is a problem
-
-
 # 3) remove if significant match in experiment non-extracellular
 removies2 = []
 # database protein and query have to be same length +- 10%
@@ -169,40 +156,40 @@ SOCK = pd.DataFrame({'SOCK': SOCK})
 a = SOCK.isin(removies)
 a_list = a.values.tolist()
 a_list.count([True])
+a_list_with_index = list(a.itertuples(index=True, name=None))
 
-if a_list.count([True]) > 0:
+if a_list_with_index.count([True]) > 0:
     indices = [i for i, x in enumerate(a_list) if x == [True]]
+    indices = [index for index, value in a_list_with_index if value]
     SOCK = SOCK.drop(indices)
-    
+
 a = SOCK.isin(removies2)
 a_list = a.values.tolist()
 a_list.count([True])
+a_list_with_index = list(a.itertuples(index=True, name=None))
 
-if a_list.count([True]) > 0:
+if a_list_with_index.count([True]) > 0:
    indices = [i for i, x in enumerate(a_list) if x == [True]]
+   indices = [index for index, value in a_list_with_index if value]
    SOCK = SOCK.drop(indices)
-    
-    ### up to here ###
-    
+
 #### 4) include if significant match in experimental extracellular
 # filter based on e-value ### 10e-20
 data_e = data_e[data_e['evalue'] < 10e-20]
 data_e = data_e[data_e['subject_length'] < data_e['query_length']*1.20 ]
 data_e = data_e[data_e['subject_length'] > data_e['query_length']*0.80 ]
-    
+
 temp = data_e['query_acc'].unique()
 if len(temp) > 0:
     temp_df = pd.DataFrame(temp, columns=SOCK.columns)
     SOCK = pd.concat([SOCK, temp_df], ignore_index=True)
 
-    
 #### 5) include if EXACT match in computational psortb
 temp = data[data['evalue'] == 0].index
 if len(temp) > 0:
     data = data.loc[temp]
     new = data['query_acc'].unique()
     new = new.tolist()
-    #SOCK = SOCK.append(new)
     new_df = pd.DataFrame(new)  # Convert list to DataFrame
     SOCK = pd.concat([SOCK, new_df], ignore_index=True)
 
@@ -211,10 +198,9 @@ def combine_columns(row):
     return ' '.join(values)
 
 # apply the function to each row of the dataframe
-SOCK['combined'] = SOCK.apply(combine_columns, axis=1)   
- 
+SOCK['combined'] = SOCK.apply(combine_columns, axis=1)
+
 blastE = SOCK['combined'].unique()
-#print(len(blastE)) # how many extracellular proteins are there
 # save output
 blastE_list = blastE.tolist()
 os.chdir(script_path)
@@ -225,12 +211,10 @@ pd.DataFrame(blastE_list).to_csv(outfile, index=False)
 ######################################################################
 
 # load list of antismash types
-
 types_dir = antismashtypes
 antismash_types = pd.read_csv(types_dir,encoding='latin-1')
 
 FILEOUT = antismashoutputpath
-#ACC = accession
 base_dir = antismashdirectory
 
 # move to region gbk directory
@@ -238,15 +222,11 @@ os.chdir(base_dir)
 # make output matrix
 BIGGERLIST = pd.DataFrame(columns=["gene_kind", "product", "locus_tag", "protein_id", "region"])
 # make list of region gbk files
-#files = [f for f in os.listdir() if f.endswith('.gbk')]
 files = [f for f in os.listdir() if f.endswith('.gbk') and 'region' in f]
 #### extract antismash type first, as its hard to do later
 PROD = [None] * len(files)
 
 for j in range(len(files)):
-    #two_num = str(j + 1).zfill(2)
-    #filefile = ACC + ".region0" + two_num + ".gbk"
-    
     # read a genbank file
     with open(files[j], "r") as f:
         data = f.read().splitlines()
@@ -260,14 +240,10 @@ for j in range(len(files)):
     prod = re.sub('\\.*product=','',vec1[bb[0]])
     prod = re.sub(' ', '', prod)
     prod = re.sub('/', '', prod)
-    ##  ## problem line
     if prod is not None:
         PROD[j] = prod
 # extract other information
 for j in range(len(files)):
-    #two_num = str(j + 1).zfill(2)
-    #filefile = ACC + ".region0" + two_num + ".gbk"
-    
     # read a genbank file
     with open(files[j], "r") as f:
         data = f.read().splitlines()
@@ -286,11 +262,8 @@ for j in range(len(files)):
         exec(f"vec{l} = k")
         exec(f"vec{l} = data[start[{l}]:end[{l}]]")
 ##
-
     BIGLIST = np.chararray([len(start), 5])
     BIGLIST = pd.DataFrame(BIGLIST, columns=["gene_kind", "product", "locus_tag", "protein_id", "region"])
-
-
     my_dict = {}
     max_lists = len(start)
     for i in range(max_lists):
@@ -325,7 +298,7 @@ for j in range(len(files)):
             lt = re.sub('\\.*locus_tag=', '', vec[cc[0]], flags=re.IGNORECASE).strip().replace(' ', '').replace('/', '')
         #protein_id
         if len(dd) > 0:
-            pid = re.sub('\\.*protein_id=', '', vec[dd[0]], flags=re.IGNORECASE).strip().replace(' ', '').replace('/', '')    
+            pid = re.sub('\\.*protein_id=', '', vec[dd[0]], flags=re.IGNORECASE).strip().replace(' ', '').replace('/', '')
         if len(gk) > 0:
             BIGLIST.iloc[i,0] = gk
         if len(prod) > 0:
@@ -337,8 +310,6 @@ for j in range(len(files)):
         BIGLIST.iloc[:,4] = j
     BIGGERLIST = pd.concat([BIGGERLIST, BIGLIST])
 
-#### dataframe has random extra columns that need deleting
-    
 # Set working directory
 os.chdir(script_path)
 
@@ -346,14 +317,14 @@ os.chdir(script_path)
 df = pd.DataFrame(BIGGERLIST)
 
 # Write DataFrame to CSV file
-df.to_csv(FILEOUT, index=False)   
-    
+df.to_csv(FILEOUT, index=False)
+
 # Read the CSV file
 data = pd.read_csv(FILEOUT)
-    
+
 # Filter out genes of unknown type
 data = data[data['gene_kind'].str.contains('gene_kind', na=False)]
-        
+
 # Filter out non-social secondary metabolite types
 social_types = antismash_types.loc[antismash_types['Social'] == 1, 'Label'].tolist()
 data['product'] = data['product'].str.replace('"', '')
@@ -394,10 +365,3 @@ result = pd.DataFrame(dataS)
 output_file = os.path.join(directory_name, "summary.csv")
 # Write the DataFrame to a CSV file with the specified column names
 result.to_csv(output_file, index=False)
-
-
-
-
-
-
-
