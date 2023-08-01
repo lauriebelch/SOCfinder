@@ -101,10 +101,10 @@ Command-line options for SOCfinder
 
 ## How to download genomes
 
-The SOCfinder reccommended way to download the genome files you need is to use the [NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/download-and-install/?utm_source=ncbi_insights&utm_medium=referral&utm_campaign=datasets-command-line-20221012) command line tool. This is so that gene ID is the same in the protein fasta, nucleotide fasta, and gff.
+The SOCfinder reccommended way to download the genome files you need is to use the [NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/download-and-install/?utm_source=ncbi_insights&utm_medium=referral&utm_campaign=datasets-command-line-20221012) command line tool to download RefSeq genomes. This is so that gene ID is the same in the protein fasta, nucleotide fasta, and gff.
 
 ```python
-datasets download genome accession GCA_003798305.1 --include gff3,genome,protein --filename GCA_003798305.1.zip
+datasets download genome accession GCF_003798305.1 --include gff3,genome,protein --filename GCF_003798305.1.zip
 ```
 
 ## Mac
@@ -115,6 +115,11 @@ conda config --add subdirs osx-64
 ```
 
 Further discussion of this issue can be found [here](https://towardsdatascience.com/how-to-manage-conda-environments-on-an-apple-silicon-m1-mac-1e29cb3bad12).
+
+There are also some problems with diamond on newer macs, that can make antismash fail. We can fix this by running
+```bash
+conda install -c bioconda diamond=0.9.14
+```
 
 ## Manuscript
 
