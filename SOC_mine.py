@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+x#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Mon May 15 10:40:00 2023
@@ -93,6 +93,8 @@ db = gffutils.create_db(gff, database_filename,force=True, keep_order=True, merg
 header_lines = []
 data = []
 for line in open(gff):
+    if line.startswith("##FASTA"):
+        break
     if line.startswith("#"):
         header_lines.append(line.strip())
     else:
@@ -201,8 +203,8 @@ os.remove(database_filename)
 bash_script = """#!/bin/bash
 ### if you need to add exec_annotation to path, do it here ##
 mkdir {blast_outputs_dir}
-exec_annotation {input} -o {outputK} -f detail-tsv --threshold-scale 0.75 --tmp-dir={DIR} --cpu=32 &
-
+exec_annotation {input} -o {outputK} -f detail-tsv --threshold-scale 0.75 --tmp-dir={DIR} --cpu=32 \
+-p /Users/user/Documents/SOCfinder/KOFAM/profiles/prokaryote.hal -k /Users/user/Documents/SOCfinder/KOFAM/ko_list &
 ### blast to gram
 blastp -db {db}/{gram} -query {input} -evalue 10e-8 -outfmt \
 "6 sseqid qacc qlen evalue bitscore sstart send slen" -out {blast_outputs_dir}/file_PSORT.txt -num_threads 16 &
