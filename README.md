@@ -124,7 +124,9 @@ conda install -c bioconda diamond=0.9.14
 
 ## Manuscript
 
-The manuscript "SOCfinder: a genomic tool for identifying cooperative genes in bacteria" has been recently submitted to *Microbial Genomics*
+The manuscript "SOCfinder: a genomic tool for identifying cooperative genes in bacteria" is now published in *Microbial Genomics*
+[link here](https://www.microbiologyresearch.org/content/journal/mgen/10.1099/mgen.0.001171)
+Belcher, Dewar, Hao, Katz, Ghoul, & West (2023) Microbial Genomics. https://doi.org/10.1099/mgen.0.001171
 
 ## Contributing
 
