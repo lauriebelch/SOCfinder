@@ -294,7 +294,7 @@ for j in range(len(files)):
         # locus tag
         lt = []  # Define lt as an empty list before the loop
         pid = []
-        if len(bb) > 0:
+        if len(cc) > 0:
             lt = re.sub('\\.*locus_tag=', '', vec[cc[0]], flags=re.IGNORECASE).strip().replace(' ', '').replace('/', '')
         #protein_id
         if len(dd) > 0:
