@@ -33,7 +33,7 @@ You will then need to download some files for KOFAMscan and ANTISMASH. The easie
 
 ```bash
 chmod +x ./helper_script
-source helper_script
+./helper_script
 ```
 
 When this script has finished running, it will tell you how to add the required programs to your path. For a simple explanation of the path, see [here](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976).
