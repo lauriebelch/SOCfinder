@@ -114,18 +114,18 @@ else:
 outfile = blastoutputpath
 
 # load blast output for PSORTB COMPUTATIONAL EXTRACELLULAR
-data = pd.read_table(blaste_output_filename, header=None, delim_whitespace=True)
+data = pd.read_table(blaste_output_filename, header=None, sep='\s+')
 # tidy column names
 data = data.assign(match_length=data.iloc[:, 7] - data.iloc[:, 6] + 1)
 data.columns = ["subject_seq_id", "query_acc", "query_length", "evalue",
                 "bitscore", "subject_start", "subject_end", "subject_length", "match_length"]
 # load blast output for PSORTB EXPERIMENTAL EXTRACELLULAR
-data_e = pd.read_table(blaste_e_output_filename, header=None, delim_whitespace=True)
+data_e = pd.read_table(blaste_e_output_filename, header=None, sep='\s+')
 data_e = data_e.assign(match_length=data_e.iloc[:, 7] - data_e.iloc[:, 6] + 1)
 data_e.columns = ["subject_seq_id", "query_acc", "query_length", "evalue",
                   "bitscore", "subject_start", "subject_end", "subject_length", "match_length"]
 # load blast output for PSORTB EXPERIMENTAL NON-EXTRACELLULAR
-data_ne = pd.read_table(blaste_ne_output_filename, header=None, delim_whitespace=True)
+data_ne = pd.read_table(blaste_ne_output_filename, header=None, sep='\s+')
 data_ne = data_ne.assign(match_length=data_ne.iloc[:, 7] - data_ne.iloc[:, 6] + 1)
 data_ne.columns = ["subject_seq_id", "query_acc", "query_length", "evalue",
                    "bitscore", "subject_start", "subject_end", "subject_length", "match_length"]
@@ -264,6 +264,12 @@ for j in range(len(files)):
 ##
     BIGLIST = np.chararray([len(start), 5])
     BIGLIST = pd.DataFrame(BIGLIST, columns=["gene_kind", "product", "locus_tag", "protein_id", "region"])
+    BIGLIST = pd.DataFrame({
+    "gene_kind": [None] * len(start),
+    "product": [None] * len(start),
+    "locus_tag": [None] * len(start),
+    "protein_id": [None] * len(start),
+    "region": [None] * len(start)}, dtype=object)
     my_dict = {}
     max_lists = len(start)
     for i in range(max_lists):
@@ -297,6 +303,7 @@ for j in range(len(files)):
         if len(cc) > 0:
             lt = re.sub('\\.*locus_tag=', '', vec[cc[0]], flags=re.IGNORECASE).strip().replace(' ', '').replace('/', '')
         #protein_id
+        
         if len(dd) > 0:
             pid = re.sub('\\.*protein_id=', '', vec[dd[0]], flags=re.IGNORECASE).strip().replace(' ', '').replace('/', '')
         if len(gk) > 0:
@@ -329,7 +336,12 @@ data = data[data['gene_kind'].str.contains('gene_kind', na=False)]
 social_types = antismash_types.loc[antismash_types['Social'] == 1, 'Label'].tolist()
 data['product'] = data['product'].str.replace('"', '')
 data['locus_tag'] = data['locus_tag'].str.replace('"', '')
-data['protein_id'] = data['protein_id'].str.replace('"', '')
+#print(data['locus_tag'])
+#print(data['protein_id'])
+data['protein_id'] = data['protein_id'].astype(str)  # This converts NaNs to 'nan' as a string
+data['protein_id'] = data['protein_id'].replace('nan', pd.NA)
+data['protein_id'] = data['protein_id'].fillna(data['locus_tag'])
+#print(data['protein_id'])
 data = data[data['product'].isin(social_types)]
 data.to_csv(FILEOUT[:-4] + "_filtered.csv", index=False)
 os.remove(FILEOUT)

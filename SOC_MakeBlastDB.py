@@ -17,6 +17,7 @@ makeblastdb -in {ff}/psort_extracellular_gramP.fasta -parse_seqids -dbtype prot 
 makeblastdb -in {ff}/psort_extracellular_gramN.fasta -parse_seqids -dbtype prot -out {db}/blastdbN
 makeblastdb -in {ff}/EXTRA.fasta -parse_seqids -dbtype prot -out {db}/blastdbCExtra
 makeblastdb -in {ff}/NON_EXTRA.fasta -parse_seqids -dbtype prot -out {db}/blastdbCNonExtra
+makeblastdb -in {ff}/psort_extracellular_gramBoth.fasta -parse_seqids -dbtype prot -out {db}/blastdbBoth
 """
 # Format the bash script with the input and output filenames
 formatted_script1 = bash_script.format(db=database_folder, ff=fasta_folder)
