@@ -89,8 +89,8 @@ Command-line options for SOCfinder
   - Path to GENOME gff file (.gff)
 - `-O outputfolder`
   - Name of output folder
-- `-p -n GramPositive | GramNegative`
-  - Gram stain (positive | negative)
+- `-p -n -b GramPositive | GramNegative | both`
+  - Gram stain (positive | negative | both)
 
 **SOC_parse.py**
 - `-i inputfolder`
