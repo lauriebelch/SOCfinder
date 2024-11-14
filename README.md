@@ -45,6 +45,7 @@ You will need to build the databases that the BLAST search uses. You only need t
 ```bash
 cd blast_files
 unzip Archive.zip
+cat psort_extracellular_gramN.fasta psort_extracellular_gramP.fasta > psort_extracellular_gramBoth.fasta
 cd ..
 chmod +x ./SOC_MakeBlastDB.py
 ./SOC_MakeBlastDB.py
