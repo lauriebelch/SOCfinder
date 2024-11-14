@@ -33,7 +33,7 @@ You will then need to download some files for KOFAMscan and ANTISMASH. The easie
 
 ```bash
 chmod +x ./helper_script
-source helper_script
+./helper_script
 ```
 
 When this script has finished running, it will tell you how to add the required programs to your path. For a simple explanation of the path, see [here](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976).
@@ -45,6 +45,7 @@ You will need to build the databases that the BLAST search uses. You only need t
 ```bash
 cd blast_files
 unzip Archive.zip
+cat psort_extracellular_gramN.fasta psort_extracellular_gramP.fasta | awk '/^>/ {if(!seen[$0]++) print; next} {print}' > psort_extracellular_gramBoth.fasta
 cd ..
 chmod +x ./SOC_MakeBlastDB.py
 ./SOC_MakeBlastDB.py
@@ -89,8 +90,8 @@ Command-line options for SOCfinder
   - Path to GENOME gff file (.gff)
 - `-O outputfolder`
   - Name of output folder
-- `-p -n GramPositive | GramNegative`
-  - Gram stain (positive | negative)
+- `-p -n -both GramPositive | GramNegative | both`
+  - Gram stain (positive | negative | both)
 
 **SOC_parse.py**
 - `-i inputfolder`

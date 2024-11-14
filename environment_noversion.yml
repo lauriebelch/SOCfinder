@@ -10,13 +10,13 @@ dependencies:
   - fastani
   - python-dateutil
   - muscle
-  - diamond
+  - diamond=0.9.14
   - ncbi-datasets-cli
   - glimmerhmm
   - biopython
   - ruby
   - phipack
-  - python
+  - python=3.10
   - blast
   - kofamscan
   - perl

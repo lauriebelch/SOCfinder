@@ -25,9 +25,12 @@ parser.add_argument('-g', '--GENOMEinput', type=str, metavar='.', required=True,
 parser.add_argument('-f', '--FASTAinput', type=str, metavar='.', required=True, help='Path to GENOME nucleotide (.fna)')
 parser.add_argument('-gff', '--gffinput', metavar='.', type=str, required=True, help='Path to GENOME gff file')
 parser.add_argument('-O', '--outputfolder', type=str, metavar='.', required=True, help='Name of output folder')
-parser.add_argument('-p', '--gramPositive', action='store_true', help='Gram stain (positive)')
-parser.add_argument('-n', '--gramNegative', action='store_true', help='Gram stain (negative)')
 
+# Mutually exclusive group for Gram staining options with required=True
+gram_group = parser.add_mutually_exclusive_group(required=True)
+gram_group.add_argument('-p', '--gramPositive', action='store_true', help='Gram stain (positive)')
+gram_group.add_argument('-n', '--gramNegative', action='store_true', help='Gram stain (negative)')
+gram_group.add_argument('-both', '--gramBoth', action='store_true', help='Search both Gram-positive and Gram-negative')
 
 # Parse the command-line arguments
 args = parser.parse_args()
@@ -63,12 +66,15 @@ print("FINDING SOCKS ....")
 ## define correct database depending on gram + or -
 # Define the initial value of gramDB
 gramDB = ""
-# Use a conditional loop to assign the value of gramDB
+# Use conditional checks to assign the appropriate database based on the Gram stain selection
 if args.gramPositive:
     gramDB = "blastdbP"
 elif args.gramNegative:
     gramDB = "blastdbN"
+elif args.gramBoth:
+    gramDB = "blastdbBoth"
 else:
+    # This else block is now redundant as argparse ensures one option is always selected
     print("WARNING - NO GRAM STAIN SELECTED - WARNING")
 
 
@@ -204,7 +210,7 @@ bash_script = """#!/bin/bash
 ### if you need to add exec_annotation to path, do it here ##
 mkdir {blast_outputs_dir}
 exec_annotation {input} -o {outputK} -f detail-tsv --threshold-scale 0.75 --tmp-dir={DIR} --cpu=32 \
--p /Users/user/Documents/SOCfinder/KOFAM/profiles/prokaryote.hal -k /Users/user/Documents/SOCfinder/KOFAM/ko_list &
+-p /local/home/zool2506/SOCfinder-main/KOFAM/profiles/prokaryote.hal -k /local/home/zool2506/SOCfinder-main/KOFAM/ko_list &
 ### blast to gram
 blastp -db {db}/{gram} -query {input} -evalue 10e-8 -outfmt \
 "6 sseqid qacc qlen evalue bitscore sstart send slen" -out {blast_outputs_dir}/file_PSORT.txt -num_threads 16 &
