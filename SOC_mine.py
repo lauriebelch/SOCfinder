@@ -36,10 +36,11 @@ gram_group.add_argument('-both', '--gramBoth', action='store_true', help='Search
 args = parser.parse_args()
 
 # Access the values of the command-line arguments
-genome = args.GENOMEinput
-fasta = args.FASTAinput
-gff = args.gffinput
-OUTPUT = args.outputfolder
+genome = os.path.abspath(args.GENOMEinput)
+fasta = os.path.abspath(args.FASTAinput)
+gff = os.path.abspath(args.gffinput)
+OUTPUT = os.path.abspath(args.outputfolder)
+
 
 ######################################################################
 ################### Make bash script ##################################
@@ -54,7 +55,7 @@ input_genome = genome
 output_name = OUTPUT
 ## blaste
 output_folder = "blast_outputs"
-database_folder = "blast_databases"
+database_folder = os.path.join(script_path, "blast_databases")
 ## anti
 fna = fasta
 gff = gff
@@ -84,10 +85,11 @@ if not os.path.exists(directory_name):
 else:
     print("WARNING - The directory already exists! - WARNINGS")
 
-blast_outputs_dir = os.path.join(directory_name, "blast_outputs")
-kofam_outputs_dir = os.path.join(directory_name, "kofam.txt")
-adir = os.path.join(directory_name, "anti_smash")
-tempdir = os.path.join(directory_name, "tmp")
+blast_outputs_dir = os.path.join(OUTPUT, "blast_outputs")
+kofam_outputs_dir = os.path.join(OUTPUT, "kofam.txt")
+adir = os.path.join(OUTPUT, "anti_smash")
+tempdir = os.path.join(OUTPUT, "tmp")
+
 
 ### fix gff
 database_filename = "OG_GFF"
@@ -203,6 +205,8 @@ with open(output_file, "w") as out_file:
 os.remove(database_filename)
 
 ### end fix GFF
+kofam_profiles = os.path.join(script_path, 'KOFAM', 'profiles', 'prokaryote.hal')
+ko_list = os.path.join(script_path, 'KOFAM', 'ko_list')
 
 ### make a bash script
 # Define the bash script contents with variables
@@ -210,16 +214,16 @@ bash_script = """#!/bin/bash
 ### if you need to add exec_annotation to path, do it here ##
 mkdir {blast_outputs_dir}
 exec_annotation {input} -o {outputK} -f detail-tsv --threshold-scale 0.75 --tmp-dir={DIR} --cpu=32 \
--p /local/home/zool2506/SOCfinder-main/KOFAM/profiles/prokaryote.hal -k /local/home/zool2506/SOCfinder-main/KOFAM/ko_list &
+-p {kofam_profiles} -k {ko_list} &
 ### blast to gram
 blastp -db {db}/{gram} -query {input} -evalue 10e-8 -outfmt \
-"6 sseqid qacc qlen evalue bitscore sstart send slen" -out {blast_outputs_dir}/file_PSORT.txt -num_threads 16 &
+"6 sseqid qacc qlen evalue bitscore sstart send slen" -out {blast_outputs_dir}/file_PSORT.txt -num_threads 32 &
 ##### blast to proven extracellular
 blastp -db {db}/blastdbCExtra -query {input} -evalue 10e-8 -outfmt \
-"6 sseqid qacc qlen evalue bitscore sstart send slen" -out {blast_outputs_dir}/file_PSORT_E.txt -num_threads 16 &
+"6 sseqid qacc qlen evalue bitscore sstart send slen" -out {blast_outputs_dir}/file_PSORT_E.txt -num_threads 32 &
 ###### blast to proven non-extracellular
 blastp -db {db}/blastdbCNonExtra -query {input} -evalue 10e-8 -outfmt \
-"6 sseqid qacc qlen evalue bitscore sstart send slen" -out {blast_outputs_dir}/file_PSORT_NE.txt -num_threads 16 &
+"6 sseqid qacc qlen evalue bitscore sstart send slen" -out {blast_outputs_dir}/file_PSORT_NE.txt -num_threads 32 &
 antismash {fna} --genefinding-gff3 {gff} --output-dir {adir}
 ### save the accession number
 file={fna}
@@ -230,7 +234,9 @@ echo $acc1 > {adir}/accession.txt
 """
 
 # Format the bash script with the input and output filenames
-formatted_script = bash_script.format(input=input_genome, outputK=kofam_outputs_dir, blast_outputs_dir=blast_outputs_dir, db=database_folder, gram=gramDB, fna=fna, gff=gff1, adir=adir, DIR=tempdir)
+formatted_script = bash_script.format(input=input_genome, outputK=kofam_outputs_dir, blast_outputs_dir=blast_outputs_dir, db=database_folder, gram=gramDB, fna=fna, gff=gff1, adir=adir, DIR=tempdir,kofam_profiles=kofam_profiles,
+    ko_list=ko_list
+)
 # Create a temporary file to store the bash script
 print("Running SOCfinder modules......")
 print("Why not grab a coffee?")

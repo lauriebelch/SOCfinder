@@ -40,9 +40,11 @@ parser.add_argument('-a', '--ANTISMASHtypes', type=str, required=True, metavar='
 args = parser.parse_args()
 
 # Access the values of the command-line arguments
+script_dir = os.path.dirname(os.path.abspath(__file__))
 inputfolder = args.inputfolder
-antismashtypes = args.ANTISMASHtypes
-kpath = args.KO
+#antismashtypes = args.ANTISMASHtypes
+antismashtypes = os.path.join(script_dir, args.ANTISMASHtypes)
+kpath = os.path.join(script_dir, args.KO)
 
 # make required paths
 directory_name = inputfolder
@@ -114,104 +116,142 @@ else:
 outfile = blastoutputpath
 
 # load blast output for PSORTB COMPUTATIONAL EXTRACELLULAR
-data = pd.read_table(blaste_output_filename, header=None, sep='\s+')
-# tidy column names
-data = data.assign(match_length=data.iloc[:, 7] - data.iloc[:, 6] + 1)
-data.columns = ["subject_seq_id", "query_acc", "query_length", "evalue",
-                "bitscore", "subject_start", "subject_end", "subject_length", "match_length"]
+if os.stat(blaste_output_filename).st_size > 0:
+    data = pd.read_table(blaste_output_filename, header=None, sep='\s+')
+else:
+    data = pd.DataFrame()
+#data = pd.read_table(blaste_output_filename, header=None, sep='\s+')
+
 # load blast output for PSORTB EXPERIMENTAL EXTRACELLULAR
-data_e = pd.read_table(blaste_e_output_filename, header=None, sep='\s+')
-data_e = data_e.assign(match_length=data_e.iloc[:, 7] - data_e.iloc[:, 6] + 1)
-data_e.columns = ["subject_seq_id", "query_acc", "query_length", "evalue",
-                  "bitscore", "subject_start", "subject_end", "subject_length", "match_length"]
+if os.stat(blaste_e_output_filename).st_size > 0:
+    data_e = pd.read_table(blaste_e_output_filename, header=None, sep='\s+')
+else:
+    data_e = pd.DataFrame()
+#data_e = pd.read_table(blaste_e_output_filename, header=None, sep='\s+')
+
 # load blast output for PSORTB EXPERIMENTAL NON-EXTRACELLULAR
-data_ne = pd.read_table(blaste_ne_output_filename, header=None, sep='\s+')
-data_ne = data_ne.assign(match_length=data_ne.iloc[:, 7] - data_ne.iloc[:, 6] + 1)
-data_ne.columns = ["subject_seq_id", "query_acc", "query_length", "evalue",
-                   "bitscore", "subject_start", "subject_end", "subject_length", "match_length"]
+if os.stat(blaste_ne_output_filename).st_size > 0:
+    data_ne = pd.read_table(blaste_ne_output_filename, header=None, sep='\s+')
+else:
+    data_ne = pd.DataFrame()
+#data_ne = pd.read_table(blaste_ne_output_filename, header=None, sep='\s+')
 
-SOCK = [] # empty list to store cooperative genes
+# tidy column names
+if not data.empty:
+    data = data.assign(match_length=data.iloc[:, 7] - data.iloc[:, 6] + 1)
+    data.columns = ["subject_seq_id", "query_acc", "query_length", "evalue",
+                    "bitscore", "subject_start", "subject_end", "subject_length", "match_length"]
+else:
+    data = pd.DataFrame(columns=["subject_seq_id", "query_acc", "query_length", "evalue",
+                                 "bitscore", "subject_start", "subject_end", "subject_length", "match_length"])
 
-## 1)  add to social if EXACT match in experimental extracellular
-temp = np.where(data_e['evalue']==0)[0] # temp stores row ID of target
-# if there is at least one target, we add it to the list
-if len(temp)>0:
-    SOCK = np.append(SOCK, np.unique(data_e.loc[temp, 'query_acc']))
+if not data_e.empty:
+    data_e = data_e.assign(match_length=data_e.iloc[:, 7] - data_e.iloc[:, 6] + 1)
+    data_e.columns = ["subject_seq_id", "query_acc", "query_length", "evalue",
+                      "bitscore", "subject_start", "subject_end", "subject_length", "match_length"]
+else:
+    data = pd.DataFrame(columns=["subject_seq_id", "query_acc", "query_length", "evalue",
+                                 "bitscore", "subject_start", "subject_end", "subject_length", "match_length"])
 
-#### 2) remove from consideration if EXACT match in experimental non-extracellular
-removies = data_ne.query_acc[data_ne.evalue==0].unique()
-data = data[~data['query_acc'].isin(removies)]
-data_e = data_e[~data_e['query_acc'].isin(removies)]
+if not data_ne.empty:
+    data_ne = data_ne.assign(match_length=data_ne.iloc[:, 7] - data_ne.iloc[:, 6] + 1)
+    data_ne.columns = ["subject_seq_id", "query_acc", "query_length", "evalue",
+                       "bitscore", "subject_start", "subject_end", "subject_length", "match_length"]
+else:
+    data = pd.DataFrame(columns=["subject_seq_id", "query_acc", "query_length", "evalue",
+                                 "bitscore", "subject_start", "subject_end", "subject_length", "match_length"])
 
-# 3) remove if significant match in experiment non-extracellular
+# Initialize SOCK as an empty list
+SOCK = []  # empty list to store cooperative genes
+
+## 1) Add to SOCK if there's an EXACT match in experimental extracellular data
+if not data_e.empty and 'evalue' in data_e.columns and 'query_acc' in data_e.columns:
+    temp_indices = np.where(data_e['evalue'] == 0)[0]  # Get indices where evalue is zero
+    # If there is at least one match, add unique 'query_acc' values to SOCK
+    if len(temp_indices) > 0:
+        matched_queries = data_e.loc[temp_indices, 'query_acc'].unique()
+        SOCK = np.append(SOCK, matched_queries)
+else:
+    temp_indices = np.array([])  # Empty array if data_e is empty or missing columns
+
+#### 2) Remove from consideration if there's an EXACT match in experimental non-extracellular data
+if not data_ne.empty and 'evalue' in data_ne.columns and 'query_acc' in data_ne.columns:
+    removies = data_ne['query_acc'][data_ne['evalue'] == 0].unique()
+    # Remove these 'query_acc' values from data, data_e, and SOCK
+    if not data.empty and 'query_acc' in data.columns:
+        data = data[~data['query_acc'].isin(removies)]
+    if not data_e.empty and 'query_acc' in data_e.columns:
+        data_e = data_e[~data_e['query_acc'].isin(removies)]
+    # Remove from SOCK
+    SOCK = [gene for gene in SOCK if gene not in removies]
+else:
+    removies = np.array([])  # Empty array if data_ne is empty or missing columns
+
+# 3) Remove if significant match in experimental non-extracellular data
 removies2 = []
-# database protein and query have to be same length +- 10%
-data_ne = data_ne[~(data_ne.iloc[:, 7] > data_ne.iloc[:, 2]*1.10)]
-data_ne = data_ne[~(data_ne.iloc[:, 7] < data_ne.iloc[:, 2]*0.90)]
-removies2 += data_ne['query_acc'].unique().tolist()
-data = data[~data['query_acc'].isin(removies2)]
-data_e = data_e[~data_e['query_acc'].isin(removies2)]
+if not data_ne.empty and 'query_acc' in data_ne.columns and 'subject_length' in data_ne.columns and 'query_length' in data_ne.columns:
+    # Filter based on protein length within ±10%
+    length_condition = (data_ne['subject_length'] >= data_ne['query_length'] * 0.90) & \
+                       (data_ne['subject_length'] <= data_ne['query_length'] * 1.10)
+    data_ne_filtered = data_ne[length_condition]
+    removies2 = data_ne_filtered['query_acc'].unique().tolist()
+    # Remove from data and data_e
+    if not data.empty and 'query_acc' in data.columns:
+        data = data[~data['query_acc'].isin(removies2)]
+    if not data_e.empty and 'query_acc' in data_e.columns:
+        data_e = data_e[~data_e['query_acc'].isin(removies2)]
+    # Remove from SOCK
+    SOCK = [gene for gene in SOCK if gene not in removies2]
+
+# Convert SOCK to a DataFrame
 SOCK = pd.DataFrame({'SOCK': SOCK})
 
-a = SOCK.isin(removies)
-a_list = a.values.tolist()
-a_list.count([True])
-a_list_with_index = list(a.itertuples(index=True, name=None))
+#### 4) Include if significant match in experimental extracellular data
+if not data_e.empty and 'evalue' in data_e.columns and 'subject_length' in data_e.columns and 'query_length' in data_e.columns and 'query_acc' in data_e.columns:
+    # Filter based on e-value and length within ±20%
+    data_e_filtered = data_e[
+        (data_e['evalue'] < 1e-19) &
+        (data_e['subject_length'] >= data_e['query_length'] * 0.80) &
+        (data_e['subject_length'] <= data_e['query_length'] * 1.20)
+    ]
+    temp_queries = data_e_filtered['query_acc'].unique()
+    if len(temp_queries) > 0:
+        temp_df = pd.DataFrame(temp_queries, columns=['SOCK'])
+        SOCK = pd.concat([SOCK, temp_df], ignore_index=True)
+else:
+    temp_queries = np.array([])  # Empty array if data_e is empty or missing columns
 
-if a_list_with_index.count([True]) > 0:
-    indices = [i for i, x in enumerate(a_list) if x == [True]]
-    indices = [index for index, value in a_list_with_index if value]
-    SOCK = SOCK.drop(indices)
+#### 5) Include if there's an EXACT match in computational psortb data
+if not data.empty and 'evalue' in data.columns and 'query_acc' in data.columns:
+    exact_matches = data[data['evalue'] == 0]
+    if not exact_matches.empty:
+        new_queries = exact_matches['query_acc'].unique()
+        new_df = pd.DataFrame(new_queries, columns=['SOCK'])
+        SOCK = pd.concat([SOCK, new_df], ignore_index=True)
 
-a = SOCK.isin(removies2)
-a_list = a.values.tolist()
-a_list.count([True])
-a_list_with_index = list(a.itertuples(index=True, name=None))
+# Remove duplicates from SOCK
+SOCK.drop_duplicates(subset='SOCK', inplace=True)
 
-if a_list_with_index.count([True]) > 0:
-   indices = [i for i, x in enumerate(a_list) if x == [True]]
-   indices = [index for index, value in a_list_with_index if value]
-   SOCK = SOCK.drop(indices)
-
-#### 4) include if significant match in experimental extracellular
-# filter based on e-value ### 10e-20
-data_e = data_e[data_e['evalue'] < 10e-20]
-data_e = data_e[data_e['subject_length'] < data_e['query_length']*1.20 ]
-data_e = data_e[data_e['subject_length'] > data_e['query_length']*0.80 ]
-
-temp = data_e['query_acc'].unique()
-if len(temp) > 0:
-    temp_df = pd.DataFrame(temp, columns=SOCK.columns)
-    SOCK = pd.concat([SOCK, temp_df], ignore_index=True)
-
-#### 5) include if EXACT match in computational psortb
-temp = data[data['evalue'] == 0].index
-if len(temp) > 0:
-    data = data.loc[temp]
-    new = data['query_acc'].unique()
-    new = new.tolist()
-    new_df = pd.DataFrame(new)  # Convert list to DataFrame
-    SOCK = pd.concat([SOCK, new_df], ignore_index=True)
-
-def combine_columns(row):
-    values = [str(val) for val in row if not pd.isna(val)]
-    return ' '.join(values)
-
-# apply the function to each row of the dataframe
-SOCK['combined'] = SOCK.apply(combine_columns, axis=1)
-
-blastE = SOCK['combined'].unique()
-# save output
-blastE_list = blastE.tolist()
+if not SOCK.empty:
+    SOCK['combined'] = SOCK.apply(lambda row: ' '.join(row.values.astype(str)), axis=1)
+    blastE = SOCK['combined'].unique()
+    # Convert to list
+    blastE_list = blastE.tolist()
+else:
+    # If SOCK is empty, create an empty list
+    blastE_list = []
 os.chdir(script_path)
-pd.DataFrame(blastE_list).to_csv(outfile, index=False)
+# Ensure that the DataFrame has the correct structure, even if empty
+df_to_save = pd.DataFrame(blastE_list, columns=['combined'])
+df_to_save.to_csv(outfile, index=False)
 
 ######################################################################
 ################### ANTISMASH ########################################
 ######################################################################
-
+os.chdir(script_dir)
 # load list of antismash types
 types_dir = antismashtypes
+absolute_path = os.path.abspath(types_dir)
 antismash_types = pd.read_csv(types_dir,encoding='latin-1')
 
 FILEOUT = antismashoutputpath
@@ -353,11 +393,12 @@ os.remove(FILEOUT)
 ## code that loads the three output csv, and combines into one
 os.chdir(script_path)
 data_a = pd.read_csv(FILEOUT[:-4] + "_filtered.csv")
+data_a['protein_id'] = data_a['protein_id'].str.replace('"', '')
 data_a = pd.DataFrame(data_a['protein_id'])
 data_k = pd.read_csv(outputpath)
 data_b = pd.read_csv(blastoutputpath)
 data_k.rename(columns={'0': 'protein_id'}, inplace=True)
-data_b.rename(columns={'0': 'protein_id'}, inplace=True)
+data_b.rename(columns={'combined': 'protein_id'}, inplace=True)
 # Concatenate the dataframes
 combined_data = pd.concat([data_a, data_b, data_k])
 # Extract the unique entries
