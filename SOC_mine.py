@@ -175,6 +175,20 @@ for idx, row in df.iterrows():
     if len(feature_type) > 15:
         rows_to_remove.append(idx)
 
+# Check for overlapping genes with the same end position and keep the longest
+cds_entries = df[df["Feature Type"] == "CDS"].copy()
+cds_entries.sort_values(by=["Sequence ID", "End", "Start"], inplace=True)
+to_remove_overlap = []
+
+for seqid, group in cds_entries.groupby("Sequence ID"):
+    end_positions = group.groupby("End")
+    for end, sub_group in end_positions:
+        if len(sub_group) > 1:
+            longest_idx = sub_group.loc[(sub_group["End"] - sub_group["Start"]).idxmax()].name
+            to_remove_overlap.extend(sub_group.index.difference([longest_idx]))
+
+rows_to_remove.extend(to_remove_overlap)
+
 # Combine the rows to be removed from both conditions
 rows_to_remove_all = rows_to_remove + rows_to_remove2
 
@@ -203,8 +217,8 @@ with open(output_file, "w") as out_file:
     df.to_csv(out_file, sep="\t", header=False, index=False, mode="a")
 
 os.remove(database_filename)
-
 ### end fix GFF
+
 kofam_profiles = os.path.join(script_path, 'KOFAM', 'profiles', 'prokaryote.hal')
 ko_list = os.path.join(script_path, 'KOFAM', 'ko_list')
 
