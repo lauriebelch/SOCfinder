@@ -20,10 +20,10 @@ ks_my_var=$(pwd)
 cd ..
 cd ..
 python_script="SOC_mine.py"
-sed -i.bak '212s/.$//' "$python_script"
-string_to_add="-p ${cwd_my_var}/profiles/prokaryote.hal -k ${cwd_my_var}/ko_list &"
-sed -i.bak '212s/$/\\/' "$python_script"
-awk -v new_line="$string_to_add" 'NR==213{$0=new_line}1' "$python_script" > temp && mv temp "$python_script"
+#sed -i.bak '212s/.$//' "$python_script"
+#string_to_add="-p ${cwd_my_var}/profiles/prokaryote.hal -k ${cwd_my_var}/ko_list &"
+#sed -i.bak '212s/$/\\/' "$python_script"
+#awk -v new_line="$string_to_add" 'NR==213{$0=new_line}1' "$python_script" > temp && mv temp "$python_script"
 chmod +x SOC_mine.py
 
 ### Download antiSMASH files ##############################
