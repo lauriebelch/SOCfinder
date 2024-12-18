@@ -6,6 +6,8 @@ Created on Mon May 15 10:40:00 2023
 @author: laurie
 """
 
+### version 1.4
+
 import subprocess
 import argparse
 import os
