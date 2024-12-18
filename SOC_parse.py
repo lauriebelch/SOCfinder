@@ -5,6 +5,7 @@ Created on Mon May 15 09:34:22 2023
 
 @author: laurie
 """
+## version 1.4
 
 ## required python packages
 import pandas as pd
